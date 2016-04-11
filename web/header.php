@@ -52,7 +52,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					<div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">					
 						<ul class="nav navbar-nav navbar-left">
 							<li class="active"><a href="index2.php"><span>H</span><span>O</span><span>M</span><span>E</span></a></li>
-								<li><a href="#" class="dropdown-toggle link link--yaku" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span>P</span><span>A</span><span>T</span><span>I</span><span>E</span><span>N</span><span>T</span><span></span><span class="caret"></span></a>
+								<li><a href="#" class="dropdown-toggle link link--yaku" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span>P</span><span>A</span><span>T</span><span>I</span><span>E</span><span>N</span><span>T</span><span>S</span><span class="caret"></span></a>
 								<ul class="dropdown-menu">
 									<li><a class="hvr-bounce-to-bottom" href="gallery.html">InPatients</a></li>
 									<li><a class="hvr-bounce-to-bottom" href="gallery.html">OutPatients</a></li>      
@@ -60,6 +60,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 							</li>
 							<li><a href="codes.html" class="link link--yaku"><span>D</span><span>O</span><span>C</span><span>T</span><span>O</span><span>R</span> <span>S</span></a></li>
 							<li><a href="codes.html" class="link link--yaku"><span>N</span><span>U</span><span>R</span><span>S</span><span>E</span><span>S</span></a></li>
+							<li><a href="codes.html" class="link link--yaku"><span>D</span><span>E</span><span>P</span><span>A</span><span>R</span><span>T</span><span>M</span><span>E</span><span>N</span><span>T</span><span>S</span></a></li>
 						
 							
 						</ul>		

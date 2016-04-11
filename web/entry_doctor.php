@@ -6,22 +6,10 @@
 	<!--banner-->
 	<div class="row">
         
-         <div class="col-xs-6 col-md-4">
-		   
-		  <ul>
-		    <li><a href="entry_patient.php" class="btn btn-secondary btn-lg active" id="button" role="button">Entry Patient</a></li>
-			<li><a href="entry_doctor.php" class="btn btn-secondary btn-lg active" id="button" role="button">Entry Doctor</a></li>
-			<li><a href="entry_nurse.php" class="btn btn-secondary btn-lg active" id="button" role="button">Entry Nurse</a></li>
-		    <li class="dropdown"> <a href="#"  id="button" class="dropdown-toggle btn btn-secondary btn-lg active" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Query Information<span class="caret"></span></a> 
-												<ul class="dropdown-menu" aria-labelledby="navbarDrop1">
-												<li class=""><a href="#one">Patient</a></li> 
-													<li class=""><a href="#two">Doctor</a></li> 
-													<li class=""><a href="#three">Nurse</a></li> 
-													<li class=""><a href="#four">Receiptionist</a></li> 
-												</ul> 
-			</li> 
-		 </ul>
-		
+        <div class="col-xs-6 col-md-4">
+		   <?php 
+		   include("left_sidebar.php");
+		   ?>
 		</div>
 		<div class="col-xs-12 col-sm-6 col-md-8">
 		
@@ -46,6 +34,15 @@
 									</div>
 									<div class="form-group">
 									</label >Doctor Type</label>
+									<div ><select name="selector1" style="width:415px;" class="form-control">
+										<option>Permanent</option>
+										<option>Visiting</option>
+										<option>Trainee</option>
+									</select></div>
+								   </div>
+								   
+								   <div class="form-group">
+									</label >Depertment</label>
 									<div ><select name="selector1" style="width:415px;" class="form-control">
 										<option>Permanent</option>
 										<option>Visiting</option>

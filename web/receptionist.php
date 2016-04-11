@@ -13,7 +13,7 @@
 		<div class="col-md-9" style="margin-top:15px;">
 		
 		
-		<h2 style="margin-bottom:10px;">Patient Information</h2>
+		<h2 style="margin-bottom:10px;">Receptionist Information</h2>
 		<div class="panel panel-default">
                         <div class="panel-heading">
                              Advanced Tables
