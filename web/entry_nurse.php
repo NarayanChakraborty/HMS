@@ -32,6 +32,13 @@
 									</label>Contact No:</label>
 									  <input type="password" data-toggle="validator" data-minlength="12" class="form-control" id="inputPassword" placeholder="Contact Number" required>
 									</div>
+									
+									 <div class="form-group">
+								   </label >Nurse Image</label>
+								   <input type="file" id="exampleInputFile"> 
+								   <p class="help-block">Input Nurse Image.</p>
+								   </div> 
+
 									<div class="form-group">
 									</label >Nurse Type</label>
 									<div ><select name="selector1" style="width:415px;" class="form-control">

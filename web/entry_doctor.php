@@ -40,6 +40,11 @@
 										<option>Trainee</option>
 									</select></div>
 								   </div>
+								   <div class="form-group">
+								   </label>Doctor Image</label>
+								   <input type="file" id="exampleInputFile"> 
+								   <p class="help-block">Input Doctor Image.</p>
+								   </div> 
 								   
 								   <div class="form-group">
 									</label >Depertment</label>
