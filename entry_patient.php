@@ -46,6 +46,12 @@
 									</div>
 									
 									<div class="form-group">
+								   </label>Attach NID Image</label>
+								   <input type="file" id="exampleInputFile"> 
+								   <p class="help-block">Input National ID Image.</p>
+								   </div> 
+								   
+									<div class="form-group">
 									</label>Room ID:</label>
 									  <input type="password" data-toggle="validator" data-minlength="12" class="form-control" id="inputPassword" placeholder="Room Number" required>
 									</div>

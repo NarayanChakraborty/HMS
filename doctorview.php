@@ -19,7 +19,19 @@
 							<div class="product-image-wrapper">
 								<div class="single-products">
 										<div class="productinfo text-center">
-											<img src="images/home/product2.jpg" alt="Megla Das"/>
+											<img src="images/d1.jpg" alt="Megla Das"/>
+											<h2>Megla Das</h2>
+											<p>MSC in Cardiology</p>
+										</div>
+								</div>
+
+							</div>
+						</div>
+											<div class="col-sm-4">
+							<div class="product-image-wrapper">
+								<div class="single-products">
+										<div class="image">
+											<img src="images/d2.png" alt="Megla Das"/>
 											<h2>Megla Das</h2>
 											<p>MSC in Cardiology</p>
 										</div>
@@ -31,7 +43,7 @@
 							<div class="product-image-wrapper">
 								<div class="single-products">
 										<div class="productinfo text-center">
-											<img src="images/home/product2.jpg" alt="Megla Das"/>
+											<img src="images/d3.jpg" alt="Megla Das"/>
 											<h2>Megla Das</h2>
 											<p>MSC in Cardiology</p>
 										</div>
@@ -43,7 +55,7 @@
 							<div class="product-image-wrapper">
 								<div class="single-products">
 										<div class="productinfo text-center">
-											<img src="images/home/product2.jpg" alt="Megla Das"/>
+											<img src="images/d4.jpg" alt="Megla Das"/>
 											<h2>Megla Das</h2>
 											<p>MSC in Cardiology</p>
 										</div>
@@ -55,19 +67,7 @@
 							<div class="product-image-wrapper">
 								<div class="single-products">
 										<div class="productinfo text-center">
-											<img src="images/home/product2.jpg" alt="Megla Das"/>
-											<h2>Megla Das</h2>
-											<p>MSC in Cardiology</p>
-										</div>
-								</div>
-
-							</div>
-						</div>
-											<div class="col-sm-4">
-							<div class="product-image-wrapper">
-								<div class="single-products">
-										<div class="productinfo text-center">
-											<img src="images/home/product2.jpg" alt="Megla Das"/>
+											<img src="images/d5.jpg" alt="Megla Das"/>
 											<h2>Megla Das</h2>
 											<p>MSC in Cardiology</p>
 										</div>

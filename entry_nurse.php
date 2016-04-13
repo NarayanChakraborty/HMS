@@ -51,6 +51,12 @@
 									</label>Enter National ID:</label>
 									  <input type="password" data-toggle="validator" data-minlength="12" class="form-control" id="inputPassword" placeholder="NID Number" required>
 									</div>
+									
+								   <div class="form-group">
+								   </label>Attach NID Image</label>
+								   <input type="file" id="exampleInputFile"> 
+								   <p class="help-block">Input National ID Image.</p>
+								   </div> 
 
 									<div class="form-group">
 									</label>Sex:</label>
