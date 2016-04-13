@@ -32,13 +32,7 @@
 										<input type="email" class="form-control" id="inputEmail" placeholder="Email" data-error="Bruh, that email address is invalid" required>
 										<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
 									</div>
-									<div class="form-group">
-									</label >Patient Type</label>
-									<div ><select name="selector1" style="width:415px;" class="form-control">
-										<option>In Patient</option>
-										<option>Out Patient</option>
-									</select></div>
-								   </div>
+
 								   
 									<div class="form-group">
 									</label>Enter National ID:</label>
