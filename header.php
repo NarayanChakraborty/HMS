@@ -61,9 +61,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 									<li><a class="hvr-bounce-to-bottom" href="gallery.html">OutPatients</a></li>      
 								</ul>
 							</li>
-							<li><a href="doctorview.php" class="link link--yaku"><span>D</span><span>O</span><span>C</span><span>T</span><span>O</span><span>R</span><span>S</span></a></li>
-							<li><a href="codes.html" class="link link--yaku"><span>N</span><span>U</span><span>R</span><span>S</span><span>E</span><span>S</span></a></li>
-							<li><a href="codes.html" class="link link--yaku"><span>D</span><span>E</span><span>P</span><span>A</span><span>R</span><span>T</span><span>M</span><span>E</span><span>N</span><span>T</span><span>S</span></a></li>
+							<li><a href="doctors_view.php" class="link link--yaku"><span>D</span><span>O</span><span>C</span><span>T</span><span>O</span><span>R</span><span>S</span></a></li>
+							<li><a href="nurses_view.php" class="link link--yaku"><span>N</span><span>U</span><span>R</span><span>S</span><span>E</span><span>S</span></a></li>
+							<li><a href="departments.php" class="link link--yaku"><span>D</span><span>E</span><span>P</span><span>A</span><span>R</span><span>T</span><span>M</span><span>E</span><span>N</span><span>T</span><span>S</span></a></li>
 						
 							
 						</ul>		
