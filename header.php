@@ -14,9 +14,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <meta name="keywords" content="We Care Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
 	Smartphone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola web design" />
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-<!-- //Custom Theme files -->
-<link href="css/bootstrap.css" type="text/css" rel="stylesheet" media="all">
-<link href="css/style.css" type="text/css" rel="stylesheet" media="all">
 
 <link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen" />
 <!-- js -->
@@ -27,6 +24,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <link href="assets/js/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
 
 <!--//end-smooth-scrolling-->	
+<!-- //Custom Theme files -->
+<link href="css/bootstrap.css" type="text/css" rel="stylesheet" media="all">
+<link href="css/style.css" type="text/css" rel="stylesheet" media="all">
+
 </head>
 <body>
 	<!--header-->
@@ -34,12 +35,14 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		<nav class="navbar navbar-default">
 			<div class="container">
 				<div class="navbar-header navbar-left">
-					<h1><a href="index.html"><img src="images/logo.png" alt="">Patient Care</a></h1>
+					<h1><a href="index.html"><img src="images/logo.png" alt="">Patient Care</a>
+					<h5 style="margin-left:80px;">Hospital Management System<h5>
+					</h1>
+					<br>
+						
 				</div>
-				<!--navigation-->
-				<div class="header-text navbar-left">
-					<h3>Hospital Management System<h3>
-				</div>
+
+				
 				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
 					<span class="sr-only">Toggle navigation</span>
 					<span class="icon-bar"></span>
@@ -58,7 +61,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 									<li><a class="hvr-bounce-to-bottom" href="gallery.html">OutPatients</a></li>      
 								</ul>
 							</li>
-							<li><a href="codes.html" class="link link--yaku"><span>D</span><span>O</span><span>C</span><span>T</span><span>O</span><span>R</span> <span>S</span></a></li>
+							<li><a href="doctorview.php" class="link link--yaku"><span>D</span><span>O</span><span>C</span><span>T</span><span>O</span><span>R</span><span>S</span></a></li>
 							<li><a href="codes.html" class="link link--yaku"><span>N</span><span>U</span><span>R</span><span>S</span><span>E</span><span>S</span></a></li>
 							<li><a href="codes.html" class="link link--yaku"><span>D</span><span>E</span><span>P</span><span>A</span><span>R</span><span>T</span><span>M</span><span>E</span><span>N</span><span>T</span><span>S</span></a></li>
 						

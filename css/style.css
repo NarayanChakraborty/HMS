@@ -603,12 +603,12 @@ a.diamond:hover p.servc-text{
 /*button  */
 
 #button{
-	font-size: 2.0em;
+	font-size: 1.7em;
     letter-spacing: 2px;
     font-family: 'Abel-Regular';
 	width:250px;
 	text-align:center;
-	padding:10px;
+	padding:8px;
 	
 }
 
@@ -2796,5 +2796,8 @@ h3.title1 {
 .right-side{
 	
 }
-
+.navbar{
+	margin-bottom:5px;
+	margin-top:-10px;
+}
 /*Narayan*/

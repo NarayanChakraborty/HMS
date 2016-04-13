@@ -39,7 +39,20 @@
             });
     </script>	
 	
+	<!------- BY Narayan-------->
+	 <!--For Fancyapp-->
+  <!--<script type="text/javascript" src="fancyapp/lib/jquery-1.10.1.min.js"></script> -->
+    <script type="text/javascript" src="fancyapp/source/jquery.fancybox.js?v=2.1.5"></script>
+    <link rel="stylesheet" type="text/css" href="fancyapp/source/jquery.fancybox.css?v=2.1.5" media="screen" />
+  
+      <script type="text/javascript">
+        $(document).ready(function() {
+
+          $('.fancybox').fancybox();
+          });
+      </script>
 	
+	<!----------------------------------->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="js/bootstrap.js"></script>
 </body>

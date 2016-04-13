@@ -23,6 +23,11 @@
 									    </label>Enter Doctor Name:</label>
 										<input type="text" class="form-control" id="inputName" placeholder="Username" required>
 									</div>
+									<form data-toggle="validator">
+									<div class="form-group">
+									    </label>Qualifications:</label>
+										<input type="text" class="form-control" id="inputName" placeholder="Degrees" required>
+									</div>
 									<div class="form-group has-feedback">
 									</label>Enter Valid Email:</label>
 										<input type="email" class="form-control" id="inputEmail" placeholder="Email" data-error="Bruh, that email address is invalid" required>
