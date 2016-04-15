@@ -13,35 +13,25 @@
 		</div>
 		<div class="col-xs-12 col-sm-6 col-md-8">
 		
-			<div class="col-md-6 validation-grids widget-shadow" style="padding-top:20px;" data-example-id="basic-forms"> 
+			<div class="col-md-6 validation-grids widget-shadow" style="padding-top:40px;padding=-left:30px;" data-example-id="basic-forms"> 
+			                 
+					<div class="navbar-header navbar-left">
+					<h1><a href="index.html"><img src="images/logo.png" alt="">Patient Care</a>
+					<h5 style="margin-left:80px;margin-top:-10px;">Imargency:01713687237<h5>
+					</h1>
+					<br>
+						
+				</div>
 							<div class="form-title">
 											
 									    <label>Patient Name :Nahida Akter</label><br>
-										<label>National  Id :0178263524273</label>
-								
-							</div><br>
-							<div class="form-body">
-								<form data-toggle="validator">
-
-
-									<div class="form-group">
-									</label>Enter Treatment Charge:</label>
-									  <input type="password" data-toggle="validator" data-minlength="12" class="form-control" id="inputPassword" placeholder="NID Number" required>
-									</div>
-									<div class="form-group">
-									</label>Enter Medicine Charge:</label>
-									  <input type="password" data-toggle="validator" data-minlength="12" class="form-control" id="inputPassword" placeholder="NID Number" required>
-									</div>
-									<div class="form-group">
-									</label>Room Charge:</label>
-									  <input type="password" data-toggle="validator" data-minlength="12" class="form-control" id="inputPassword" placeholder="NID Number" required>
-									</div>
-
-									<div class="form-group">
-										<a href="report_generate.php"><button type="submit" class="btn btn-primary" style="width:200px;margin-left:110px;">Submit</button></a>
-									</div>
-								</form>
-							</div>
+										<label>National  Id :0178263524273</label><br>
+								        <label>Treatment Charge : 450 tk </label><br>
+										<label>Medicine Charge   :1000 tk </label><br>
+										<label>Room      Charge  : 1000 tk </label><br>
+										<label> Total            : 2450  tk  </label><br>
+							</div><br><br><br>
+							<h5> THANKS FOR TAKING OUR SERVICE</h5><br>
 						</div>
 		
 		</div>

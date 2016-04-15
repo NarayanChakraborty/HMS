@@ -2,7 +2,7 @@
 	<div class="copy-right">
 		<div class="container">
 			<div class="clearfix"> </div>
-			<p>© 2016 Patient care . All rights reserved | Design by <a href="#">S_Square_A</a></p>	
+			<p>© 2016 Patient Care . All rights reserved | Design by <a href="#">Narayan</a></p>	
 		</div>
 	</div>
 	<!--//copy-right-->
