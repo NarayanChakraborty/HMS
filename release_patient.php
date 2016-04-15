@@ -6,7 +6,7 @@
 	<!--banner-->
 	<div class="row">
         
-        <div class="col-xs-6 col-md-4">
+        <div class="col-xs-6 col-md-4"style="min-height:400px;">
 		   <?php 
 		   include("left_sidebar.php");
 		   ?>

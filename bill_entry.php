@@ -4,7 +4,7 @@
 		
 
 	<!--banner-->
-	<div class="row">
+	<div class="row"style="min-height:400px;">
         
         <div class="col-xs-6 col-md-4">
 		   
