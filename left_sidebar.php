@@ -1,4 +1,4 @@
-	
+
 	<ul>
 		    <li><a href="entry_patient.php" class="btn btn-secondary btn-lg active" id="button" role="button">Entry Patient</a></li>
 			<li><a href="entry_doctor.php" class="btn btn-secondary btn-lg active" id="button" role="button">Entry Doctor</a></li>
@@ -9,7 +9,6 @@
 												<li class=""><a href="patient_details.php">Patient</a></li> 
 													<li class=""><a href="doctor_details.php">Doctor</a></li> 
 													<li class=""><a href="nurse_details.php">Nurse</a></li> 
-													<li class=""><a href="receptionist.php">Receiptionist</a></li> 
 													<li class=""><a href="room_details.php">Rooms</a></li>
 									</ul> 
 			</li> 

@@ -1,13 +1,11 @@
 <!--
-Author: W3layouts
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
+Author: SN Chakraborty
+
 -->
 <!DOCTYPE html>
 <html>
 <head>
-<title>We Care a Medical Category Flat Bootstrap Responsive website Template | Home :: w3layouts</title>
+<title>Patient Care - SN Chakraborty</title>
 <!-- Custom Theme files -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -64,7 +62,15 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 							<li><a href="doctors_view.php" class="link link--yaku"><span>D</span><span>O</span><span>C</span><span>T</span><span>O</span><span>R</span><span>S</span></a></li>
 							<li><a href="nurses_view.php" class="link link--yaku"><span>N</span><span>U</span><span>R</span><span>S</span><span>E</span><span>S</span></a></li>
 							<li><a href="departments.php" class="link link--yaku"><span>D</span><span>E</span><span>P</span><span>A</span><span>R</span><span>T</span><span>M</span><span>E</span><span>N</span><span>T</span><span>S</span></a></li>
-						
+						    
+							<li><a href="#" class="dropdown-toggle link link--yaku" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span>A</span><span>D</span><span>M</span><span>I</span><span>N</span><span class="caret"></span></a>
+								<ul class="dropdown-menu">
+									<li><a class="hvr-bounce-to-bottom" href="gallery.html">View Profile</a></li>
+									<li><a class="hvr-bounce-to-bottom" href="gallery.html">Edit Profile</a></li>
+									<li><a class="hvr-bounce-to-bottom" href="gallery.html">Change Password</a></li>  
+									<li><a class="hvr-bounce-to-bottom" href="logout.php">Log Out</a></li>  
+								</ul>
+							</li>
 							
 						</ul>		
 						<div class="clearfix"> </div>

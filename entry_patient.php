@@ -1,7 +1,18 @@
+	
+<?php
+ob_start();
+session_start();
+if($_SESSION['name']!='snchousebd')
+{
+header('location: index.php');
+}
+?>	
+	
 	<!--banner-->
 <?php include("header.php");?>
          
 		
+
 
 	<!--banner-->
 	<div class="row" style="min-height:400px;">
