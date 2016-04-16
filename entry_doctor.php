@@ -38,23 +38,7 @@ header('location: index.php');
 									    </label>Qualifications:</label>
 										<input type="text" class="form-control" id="inputName" placeholder="Degrees" required>
 									</div>
-									<div class="form-group has-feedback">
-									</label>Enter Valid Email:</label>
-										<input type="email" class="form-control" id="inputEmail" placeholder="Email" data-error="Bruh, that email address is invalid" required>
-										<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
-									</div>
-									<div class="form-group">
-									</label>Contact No:</label>
-									  <input type="password" data-toggle="validator" data-minlength="12" class="form-control" id="inputPassword" placeholder="Contact Number" required>
-									</div>
-									<div class="form-group">
-									</label >Doctor Type</label>
-									<div ><select name="selector1" style="width:415px;" class="form-control">
-										<option>Permanent</option>
-										<option>Visiting</option>
-										<option>Trainee</option>
-									</select></div>
-								   </div>
+						
 								   <div class="form-group">
 								   </label>Doctor Image</label>
 								   <input type="file" id="exampleInputFile"> 

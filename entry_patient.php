@@ -14,6 +14,9 @@ header('location: index.php');
 		<!---------------------------------------------------->
 		<?php include_once("config.php");?>
          <?php
+		 
+		 $p_room_id=0;
+		 $p_doctor_id=0;
 if(isset($_POST['submit'])){
   try {
     if(empty($_POST['p_name']))
@@ -33,10 +36,9 @@ if(isset($_POST['submit'])){
       throw new Exception("Patient national ID  Cannot be empty!");   
     }
 
-
     if(empty($_POST['p_room_id']))
     {
-        throw new Exception("Put 0 for No Room");
+     $p_room_id=0;   
     }    
 	if(empty($_POST['p_doctor_id']))
     {
@@ -87,9 +89,10 @@ if(isset($_POST['submit'])){
         $entry_date= date('Y-m-d');
 		
 		$num=0;
-		if(isset($_POST['p_room_id']))
+		$room_no=$_POST['p_room_id'];
+		if((isset($_POST['p_room_id']))&& $room_no>0)
 		{
-		   $statement = $db->prepare("SELECT * FROM room where room_id=?");
+		   $statement = $db->prepare("SELECT * FROM rooms where room_id=? and room_status=0");
            $statement->execute(array($_POST['p_room_id']));
            $num = $statement->rowCount();
 		  if($num>0)
@@ -121,8 +124,8 @@ if(isset($_POST['submit'])){
 		}
 		
 		
-		$statement1=$db->prepare("insert into patient_details(p_name,p_contact_no,p_email_id,p_nid,p_nid_image,p_room_id,p_doctor_id,p_sex,p_entry_date,p_release_date) values(?,?,?,?,?,?,?,?,?)");
-		   $statement1->execute(array($_POST['p_name'],$_post['p_contact_no'],$_POST['p_email'],$_POST['p_nid'],$row['p_nid_image'],$p_room_id,$p_doctor_id,$_POST['p_sex'],$entry_date,0));
+		$statement1=$db->prepare("insert into patient_details(p_name,p_contact_no,p_email_id,p_nid,p_nid_image,p_room_id,p_doctor_id,p_sex,p_entry_date,p_release_date) values(?,?,?,?,?,?,?,?,?,?)");
+		   $statement1->execute(array($_POST['p_name'],$_POST['p_contact_no'],$_POST['p_email'],$_POST['p_nid'],$f1,$p_room_id,$p_doctor_id,$_POST['p_sex'],$entry_date,0));
 		   
 		   $success_message="Patient details is inserted succesfully";
 		
@@ -171,71 +174,48 @@ if(isset($_POST['submit'])){
                        <?php
                         }
                       ?>
-								
-								
-								
-								
+										
 							</div><br>
 							<div class="form-body">
-								<form data-toggle="validator" meethod="POST" >
+								<form action="entry_patient.php" method="post"  enctype="multipart/form-data">
 									<div class="form-group">
-									    </label>Enter Patient Name:</label>
+									    <label>Enter Patient Name:</label>
 										<input type="text" class="form-control" id="inputName" placeholder="Username" name="p_name" required>
 									</div>
 									<div class="form-group">
-									</label>Contact No:</label>
+									<label>Contact No:</label>
 									  <input type="text" data-toggle="validator" data-minlength="12" class="form-control"  placeholder="Contact Number"
                                      	name="p_contact_no" required>
 									</div>
-									<div class="form-group has-feedback">
-									</label>Enter Valid Email:</label>
+								
+									<label>Enter Valid Email:</label>
 										<input type="email" class="form-control" id="inputEmail" placeholder="Email" 
 										name="p_email" data-error="Bruh, that email address is invalid" required>
 										<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
-									</div>
 
 								   
-									<div class="form-group">
-									</label>Enter National ID:</label>
+									<label>Enter National ID:</label>
 									  <input type="text" data-toggle="validator" data-minlength="12" class="form-control" 
 									  name="p_nid" id="inputPassword" placeholder="NID Number" required>
-									</div>
-									
-									<div class="form-group">
-								   </label>Attach NID Image</label>
+
+								   <label>Attach NID Image</label>
 								   <input type="file" id="exampleInputFile" name="p_nid_image"> 
 								   <p class="help-block">Input National ID Image.</p>
 								   </div> 
 								   
 									<div class="form-group">
-									</label>Room ID:</label>
+									<label>Room ID:</label>
+
+									<input type="text" data-toggle="validator" data-minlength="3" class="form-control" name="p_room_id" placeholder="Room Number" >
+                                    </div>
 									
-									 <?php
-                                      $statement1 = $db->prepare("SELECT * FROM room WHERE room_status=0");
-                                      $statement1->execute(array());
-                                      $result1 = $statement1->fetchAll(PDO::FETCH_ASSOC);
-                                      foreach ($result1 as $row1) {
-                                         # code...?>
-                                         
-                                      <li>
-                                        <input type="number" data-toggle="validator" value="<?php echo $row1['room_id'] ; ?>" data-minlength="3" class="form-control" name="p_room_id" placeholder="Room Number" required>
-                                      </li>
-                                     <?php
-                                       } 
-                                      ?>
-									
-									
-									
-									
-									  
-									</div>
 									
 									<div class="form-group">
-									</label>Doctor ID:</label>
-									  <input type="number" data-toggle="validator" data-minlength="3" class="form-control" name="p_doctor_id" placeholder="Room Number" required>
+									<label>Doctor ID:</label>
+									  <input type="text" data-toggle="validator" data-minlength="3" class="form-control" name="p_doctor_id" placeholder="Doctor ID" required>
 									</div>
 									<div class="form-group">
-									</label>Sex:</label>
+									<label>Sex:</label>
 										<div class="radio">
 											<label>
 											  <input type="radio" name="p_sex"value="female" required>
@@ -250,7 +230,7 @@ if(isset($_POST['submit'])){
 										</div>
 									</div>
 									<div class="form-group">
-										<button type="submit" class="btn btn-primary" name="submit" style="width:200px;margin-left:110px;">Save</button>
+										<input type="submit"  name="submit" style="width:200px;margin-left:110px;" value="save">
 									</div>
 								</form>
 							</div>
