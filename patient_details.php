@@ -36,8 +36,16 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+									<?php
+								 $statement=$db->prepare('Select * from patient_details');
+								  $statement->execute();
+								  $result=$statement->fetchAll(PDO::FETCH_ASSOC);
+								  foreach( $result as $row)
+								  {
+									  ?>
+									
                                         <tr class="odd gradeX">
-                                            <td>Abdul</td>
+                                            <td><?php echo $row['p_name']; ?></td>
                                            
                                             <td>01712345672</td>
                                             <td class="center">Inpatient</td>
@@ -90,7 +98,9 @@
                                               </div>
                                             </td>
                                         </tr>
-                                        
+                                        <?php
+								  }
+										?>
                                     </tbody>
                                 </table>
                             </div>
