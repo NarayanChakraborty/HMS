@@ -27,6 +27,7 @@
                                             <th>Contact Number</th>
 											<th>Email</th>
                                             <th>National ID</th>
+											<th>Sex</th>
 											<th>Doctor Name</th>
 											<th>Room ID</th>
 											<th>Entry</th>
@@ -50,6 +51,7 @@
                                             <td><?php echo $row['p_contact_no'];?></td>
 											<td class="center"><?php echo $row['p_email_id']; ?></td>
                                             <td class="center"><?php echo $row['p_nid']; ?></td>
+											<td class="center"><?php  echo $row['p_sex']; ?></td>
 											<td class="center">
 											
 											<?php 

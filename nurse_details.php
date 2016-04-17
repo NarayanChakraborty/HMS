@@ -12,6 +12,7 @@ header('location: index.php');
 <?php include("header.php");?>
          
 		
+<?php include_once("config.php");?>
 
 	<!--banner-->
 	<div class="row">        
@@ -37,19 +38,38 @@ header('location: index.php');
                                             <th>Contact Number</th>
                                             <th>Type</th>
                                             <th>National ID</th>
-											<th>Room ID</th>
-											<th>Shift</th>
+											
+											<th>Sex</th>
 											<th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
+										
+										<?php 
+											$statement1 = $db->prepare("SELECT * FROM nurse_details");
+										    $statement1->execute();
+										    $result1=$statement1->fetchAll(PDO::FETCH_ASSOC);
+						                    foreach( $result1 as $row1)
+						                   {
+											   
+											   
+											   
+											$statement2 = $db->prepare("SELECT * FROM employee_details where e_id=?");
+										    $statement2->execute(array($row1['employee_id']));
+										     $result2=$statement2->fetchAll(PDO::FETCH_ASSOC);
+						                    foreach( $result2 as $row2)
+						                   {
+										?>
+										
+									           
+									
                                         <tr class="odd gradeX">
-                                            <td>Meghla </td> 
-                                            <td>01712345672</td>
-                                            <td class="center">Trainee</td>
-                                            <td class="center">6655234002871762</td>
-											<td class="center">01</td>
-											<td class="center">Day</td>
+
+                                            <td class="center"> <?php echo $row2['e_name']; ?></td> 
+                                            <td class="center"><?php echo $row2['e_contact_no']; ?></td>
+                                            <td class="center"><?php echo $row1['nurse_type']; ?></td>
+                                            <td class="center"><?php echo $row2['e_nid']; ?></td>
+											<td class="center"><?php echo $row2['e_sex']; ?></td>
 											
 											<td>
 										      <div class="btn-group-sm">
@@ -94,7 +114,10 @@ header('location: index.php');
                                             </td>
                                         </tr>
                                         
-                                        
+                                        <?php
+										       }
+										   }
+										   ?>
                                     </tbody>
                                 </table>
                             </div>
