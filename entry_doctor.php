@@ -14,9 +14,7 @@ header('location: index.php');
          		
 		<?php include_once("config.php");?>
          <?php
-		 
-		 $p_room_id=0;
-		 $p_doctor_id=0;
+
 if(isset($_POST['submit'])){
   try {
     if(empty($_POST['d_name']))
@@ -33,11 +31,11 @@ if(isset($_POST['submit'])){
     }   
 	if(empty($_POST['d_qualifications']))
     {
-      throw new Exception("Doctor email Cannot be empty!");   
+      throw new Exception("Doctor Qualifications Cannot be empty!");   
     }    
 	if(empty($_POST['d_type']))
     {
-      throw new Exception("Doctor email Cannot be empty!");   
+      throw new Exception("Doctor Type Cannot be empty!");   
     }   
 	if(empty($_POST['d_department_name']))
     {

@@ -27,10 +27,10 @@ if(isset($_POST['submit'])){
     {
       throw new Exception("Patient Contact No can't be empty!");   
     }
-    if(empty($_POST['p_email']))
+   /* if(empty($_POST['p_email']))
     {
       throw new Exception("Patient email Cannot be empty!");   
-    }
+    }*/
     if(empty($_POST['p_nid']))
     {
       throw new Exception("Patient national ID  Cannot be empty!");   
@@ -190,7 +190,7 @@ if(isset($_POST['submit'])){
 								
 									<label>Enter Valid Email:</label>
 										<input type="email" class="form-control" id="inputEmail" placeholder="Email" 
-										name="p_email" data-error="Bruh, that email address is invalid" required>
+										name="p_email" data-error="Bruh, that email address is invalid">
 										<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
 
 								   
