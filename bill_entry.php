@@ -6,11 +6,41 @@ if($_SESSION['name']!='snchousebd')
 header('location: index.php');
 }
 ?>		
+<?php
+if(!isset($_REQUEST['id']))
+{
+	header("location:patient_details.php");
+}
+else
+{
+		$id=$_REQUEST['id'];
+}
+
+?>
 	
 	<!--banner-->
 <?php include("header.php");?>
          
-		
+	<?php include_once("config.php");?>
+
+<?php
+if(isset($_POST['submit'])){
+  try {
+    if(empty($_POST['t_charge']))
+    {
+      throw new Exception("Treatment Charge Cannot be empty!");   
+    }
+    
+	$statement1=$db->prepare("insert into bill(patient_id,treatment_charge,medicine_charge,room_charge) values(?,?,?,?)");
+	$statement1->execute(array($id,$_POST['t_charge'],$_POST['m_charge'],$_POST['r_charge']));
+	 $success_message="Nurse details is inserted succesfully";
+	
+  }
+catch (Exception $e) {
+    $error_message = $e->getMessage();
+  }
+}
+?>	
 
 	<!--banner-->
 	<div class="row"style="min-height:400px;">
@@ -27,26 +57,58 @@ header('location: index.php');
 			<div class="col-md-6 validation-grids widget-shadow" style="padding-top:20px;"data-example-id="basic-forms"> 
 							<div class="form-title">
 								<h4><u>Bill Entry Form :</u></h4>
+								
+									
+																
+								<?php
+                      if(isset($error_message)){
+                        ?>
+                        <div class="alert alert-block alert-danger fade in">
+                          <button data-dismiss="alert" class="close close-sm" type="button">
+                          <i class="icon-remove">x</i>
+                          </button>
+                          <strong>Opps!&nbsp; </strong><?php echo $error_message;?>
+                       </div>
+                        <?php
+                      }
+                      if (isset($success_message)) {
+                       ?>
+                        <div class="alert alert-block alert-success fade in">
+                          <button data-dismiss="alert" class="close close-sm" type="button">
+                          <i class="icon-remove">x</i>
+                          </button>
+                          <strong>Well done!&nbsp; </strong><?php echo $success_message;?>
+                       </div>
+                       <?php
+                        }
+                      ?>
+								
+								
+								
+								
+								
+								
+								
 							</div><br>
 							<div class="form-body">
-								<form data-toggle="validator">
+								<form data-toggle="validator" method="post">
 									<div class="form-group">
 									    </label>Treatment Charge:</label>
-										<input type="text" class="form-control" id="inputName" placeholder="Username" required>
+										<input type="double" class="form-control" id="inputName" name="t_charge" placeholder="Treatment Charge" required>
 									</div>
 									<form data-toggle="validator">
 									<div class="form-group">
 									    </label>Medicine Charge:</label>
-										<input type="text" class="form-control" id="inputName" placeholder="Degrees" required>
+										<input type="double" class="form-control" id="inputName" name="m_charge" placeholder="Medicine Charge" required>
 									</div>
 									<div class="form-group has-feedback">
 									</label>Room Charge:</label>
-										<input type="email" class="form-control" id="inputEmail" placeholder="Email" data-error="Bruh, that email address is invalid" required>
+										<input type="double" class="form-control"  placeholder="Room Charge" name="r_charge" data-error="Bruh, that email address is invalid" required>
 										<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
 									</div>
 
 									<div class="form-group">
-										<button type="submit" class="btn btn-primary" style="width:200px;margin-left:110px;">Save</button>
+										<input type="submit"  name="submit" style="width:200px;margin-left:110px;" value="save">
 									</div>
 								</form>
 							</div>
