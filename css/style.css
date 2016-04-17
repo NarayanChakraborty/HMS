@@ -2808,7 +2808,10 @@ h3.title1 {
 	padding:7px;
 	
 }
-
+.btn-group-sm
+{
+	width:100px;
+}
 /*button*/
 
 /*Narayan*/
