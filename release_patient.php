@@ -29,19 +29,15 @@ header('location: index.php');
 								<h4><u>Provide Information:</u></h4>
 							</div><br>
 							<div class="form-body">
-								<form data-toggle="validator">
+								<form  method="get" action="report_generate.php">
 									<div class="form-group">
-									    </label>Enter Patient Name:</label>
-										<input type="text" class="form-control" id="inputName" placeholder="Username" required>
+									    </label>Enter Patient ID:</label>
+										<input type="text" class="form-control" id="inputName "name="id" placeholder="Patient"ID required>
 									</div>
 
-									<div class="form-group">
-									</label>Enter National ID:</label>
-									  <input type="password" data-toggle="validator" data-minlength="12" class="form-control" id="inputPassword" placeholder="NID Number" required>
-									</div>
 
 									<div class="form-group">
-										<a href="report_generate.php"><button type="submit" class="btn btn-primary" style="width:200px;margin-left:110px;">Submit</button></a>
+										<a href="report_generate.php?id=<?php echo $_POST['id']; ?>&"><button type="submit" class="btn btn-primary" style="width:200px;margin-left:110px;">Submit</button></a>
 									</div>
 								</form>
 							</div>

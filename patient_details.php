@@ -23,7 +23,9 @@
                                 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                     <thead>
                                         <tr>
-                                            <th>Patient Name</th>
+										
+                                            <th>Patient ID</th>
+											<th>Patient Name</th>
                                             <th>Contact Number</th>
 											<th>Email</th>
                                             <th>National ID</th>
@@ -46,6 +48,7 @@
 									  ?>
 									
                                         <tr class="odd gradeX">
+										   <td><?php echo $row['p_id']; ?></td>
                                             <td><?php echo $row['p_name']; ?></td>
                                            
                                             <td><?php echo $row['p_contact_no'];?></td>
@@ -75,40 +78,25 @@
 											
 											<td>
 										      <div class="btn-group-sm">
-											  <a class="btn btn-primary fancybox" href="#inline1" title="view" ><i class="glyphicon glyphicon-asterisk"></i></a>
+											  <a class="btn btn-primary fancybox" href="#inline<?php echo $row['p_id'];?>" title="view" ><i class="glyphicon glyphicon-asterisk"></i></a>
 											  <!--Fancy Box-->
 													  
-													  <div id="inline1" style="display:none;width:700px;margin:10px 30px">
+													  <div id="inline<?php echo $row['p_id'];?>" style="display:none;width:700px;margin:10px 30px">
 														<h2>Hello</h2>
+														
+											<h4>Patient Name :<?php echo $row['p_id']; ?></h4>
+                                            <h4>Contact Number :<?php echo $row['p_contact_no']; ?></h4>
+											<h4>Email: <?php echo $row['p_email_id']; ?></h4>
+                                            <h4>National ID : <?php echo $row['p_nid']; ?></h4>
+										
+														
 														
 													  </div>
 													  <!--Fancy box End-->
 											  
 
 											  <a class="btn btn-success" href="patient_edit.php"><i class="glyphicon glyphicon-pencil"></i></a>
-											  <a class="btn btn-danger" href="#" title="delete patient" data-toggle="modal" data-target="#patientmodal"><i class="glyphicon glyphicon-remove"></i></a>
-											  
-											 <!-- Modal -->
-													<div id="patientmodal" class="modal fade " role="dialog">
-													  <div class="modal-dialog">
-
-														<!-- Modal content-->
-														<div class="modal-content">
-														  <div class="modal-header">
-															<button type="button" class="close" data-dismiss="modal">&times;</button>
-															<h4 class="modal-title">DELETE Confirmation</h4>
-														  </div>
-														  <div class="modal-body">
-															<h4>Are You Confirm To Delete This Element?</h4>
-														  </div>
-														  <div class="modal-footer">
-															<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-															<a class="btn btn-danger btn-ok" href="product_delete.php?id=<?php echo $row['p_id']; ?>" >Confirm</a>
-														  </div>
-														</div>
-
-													  </div>
-													</div> 
+									
 											  
 											  
 											  

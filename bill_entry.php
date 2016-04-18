@@ -30,10 +30,10 @@ if(isset($_POST['submit'])){
     {
       throw new Exception("Treatment Charge Cannot be empty!");   
     }
-    
-	$statement1=$db->prepare("insert into bill(patient_id,treatment_charge,medicine_charge,room_charge) values(?,?,?,?)");
-	$statement1->execute(array($id,$_POST['t_charge'],$_POST['m_charge'],$_POST['r_charge']));
-	 $success_message="Nurse details is inserted succesfully";
+    $total_charge=$_POST['t_charge']+$_POST['m_charge']+$_POST['r_charge'];
+	$statement1=$db->prepare("insert into bill(patient_id,treatment_charge,medicine_charge,room_charge,total_charge) values(?,?,?,?,?)");
+	$statement1->execute(array($id,$_POST['t_charge'],$_POST['m_charge'],$_POST['r_charge'],$total_charge));
+	 $success_message="Bill details are inserted succesfully";
 	
   }
 catch (Exception $e) {

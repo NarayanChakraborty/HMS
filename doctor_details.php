@@ -32,6 +32,7 @@ header('location: index.php');
                                 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                     <thead>
                                         <tr>
+										   <th>Doctor ID</th>
                                             <th>Doctor Name</th>
 											<th>Degrees</th>
                                             <th>Contact Number</th>
@@ -64,7 +65,7 @@ header('location: index.php');
                                         <tr class="odd gradeX">
 										
 							
-										
+                                            <td class="center"><?php echo $row1['doctor_id']; ?></td>
                                             <td class="center"><?php echo $row2['e_name']; ?></td>
 											<td class="center"><?php echo $row1['doctor_qualification']; ?></td>
                                             <td class="center"><?php echo $row2['e_contact_no']; ?></td>

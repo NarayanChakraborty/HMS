@@ -101,7 +101,7 @@ if(isset($_POST['submit'])){
 		  }
 		  else
 		  {
-		   throw new Exception('Invalid Room No');
+		   throw new Exception('Invalid');
 		   }
 		   
 		}
@@ -146,7 +146,7 @@ if(isset($_POST['submit'])){
 		   include("left_sidebar.php");
 		   ?>
 		</div>
-		<div class="col-xs-12 col-sm-6 col-md-8">
+		<div class="col-xs-12 col-sm-6 col-md-8" ">
 		
 			<div class="col-md-6 validation-grids widget-shadow" style="padding-top:20px;"data-example-id="basic-forms"> 
 							<div class="form-title">
@@ -176,7 +176,7 @@ if(isset($_POST['submit'])){
                       ?>
 										
 							</div><br>
-							<div class="form-body">
+							<div class="form-body"  >
 								<form action="entry_patient.php" method="post"  enctype="multipart/form-data">
 									<div class="form-group">
 									    <label>Enter Patient Name:</label>
@@ -184,7 +184,7 @@ if(isset($_POST['submit'])){
 									</div>
 									<div class="form-group">
 									<label>Contact No:</label>
-									  <input type="text" data-toggle="validator" data-minlength="12" class="form-control"  placeholder="Contact Number"
+									  <input type="text" data-toggle="validator" data-length="12" class="form-control"  placeholder="Contact Number"
                                      	name="p_contact_no" required>
 									</div>
 								
@@ -195,13 +195,12 @@ if(isset($_POST['submit'])){
 
 								   
 									<label>Enter National ID:</label>
-									  <input type="text" data-toggle="validator" data-minlength="12" class="form-control" 
+									  <input type="text" data-toggle="validator" data-length="17" class="form-control" 
 									  name="p_nid" id="inputPassword" placeholder="NID Number" required>
 
 								   <label>Attach NID Image</label>
 								   <input type="file" id="exampleInputFile" name="p_nid_image"> 
 								   <p class="help-block">Input National ID Image.</p>
-								   </div> 
 								   
 									<div class="form-group">
 									<label>Room ID:</label>
@@ -211,8 +210,36 @@ if(isset($_POST['submit'])){
 									
 									
 									<div class="form-group">
-									<label>Doctor ID:</label>
-									  <input type="text" data-toggle="validator" data-minlength="3" class="form-control" name="p_doctor_id" placeholder="Doctor ID" required>
+									<label>Doctor Name:</label>
+									
+									
+									<select class="form-control m-bot15" name="p_doctor_id'" required>
+									  <option></option>
+									<?php 
+											$statement1 = $db->prepare("SELECT * FROM doctor_details");
+										    $statement1->execute();
+										     $result1=$statement1->fetchAll(PDO::FETCH_ASSOC);
+						                    foreach( $result1 as $row1)
+						                   {
+											   
+											   
+											   
+											$statement2 = $db->prepare("SELECT * FROM employee_details where e_id=?");
+										    $statement2->execute(array($row1['employee_id']));
+										     $result2=$statement2->fetchAll(PDO::FETCH_ASSOC);
+						                    foreach( $result2 as $row2)
+						                   {
+										?>
+									
+									
+									  <option value="<?php echo $row1['doctor_id'];?>"><?php echo $row2['e_name'];?></option>
+									  
+									  <?php
+										   }
+										   }
+										   ?>
+									  
+									  </select>
 									</div>
 									<div class="form-group">
 									<label>Sex:</label>
@@ -230,7 +257,7 @@ if(isset($_POST['submit'])){
 										</div>
 									</div>
 									<div class="form-group">
-										<input type="submit"  name="submit" style="width:200px;margin-left:110px;" value="save">
+										<input type="submit"  name="submit" style="width:200px;margin-left:110px;margin-top:50px;" value="save">
 									</div>
 								</form>
 							</div>

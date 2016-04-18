@@ -7,11 +7,21 @@ if($_SESSION['name']!='snchousebd')
 header('location: index.php');
 }
 ?>	
+<?php
+if(!isset($_REQUEST['id']))
+{
+	header("location: release_patient.php");
+}
+else
+{
+		$id=$_REQUEST['id'];
+}
 
+?>
 
 	<!--banner-->
 <?php include("header.php");?>
-         
+         <?php include_once("config.php");?>
 		
 
 	<!--banner-->
@@ -34,15 +44,24 @@ header('location: index.php');
 						
 				</div>
 							<div class="form-title">
-											
-									    <label>Patient Name :Nahida Akter</label><br>
-										<label>National  Id :0178263524273</label><br>
-								        <label>Treatment Charge : 450 tk </label><br>
-										<label>Medicine Charge   :1000 tk </label><br>
-										<label>Room      Charge  : 1000 tk </label><br>
-										<label> Total            : 2450  tk  </label><br>
+							        <?php
+									
+									 $statement3 = $db->prepare("SELECT * from bill where patient_id=?");
+										                $statement3->execute(array($id));
+												$result3=$statement3->fetchAll();
+		                                     foreach($result3 as $row3)
+											 {
+									
+									?>
+								        <label>Treatment Charge : <?php echo $row3['treatment_charge']; ?></label><br>
+										<label>Medicine Charge   :<?php echo $row3['medicine_charge']; ?> </label><br>
+										<label>Room      Charge  : <?php echo $row3['room_charge']; ?></label><br>
+										<label> Total            : <?php echo $row3['total_charge']; ?>  </label><br>
 							</div><br><br><br>
 							<h5> THANKS FOR TAKING OUR SERVICE</h5><br>
+							<?php
+														}
+														?>
 						</div>
 		
 		</div>

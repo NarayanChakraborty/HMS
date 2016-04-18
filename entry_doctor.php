@@ -77,7 +77,7 @@ if(isset($_POST['submit'])){
 
 	    
 		//only allow png ,jpg,jpeg,gif
-		if(($file_ext!='.png')&&($file_ext!='.jpg')&&($file_ext!='.jpeg')&&($file_ext!=['.gif']))
+		if(($file_ext!='.png')&&($file_ext!='.jpg')&&($file_ext!='.jpeg')&&($file_ext!='.gif'))
 		{
 			throw new Exception("only jpg,jpeg,png and gif format are allowed");
 		}
@@ -118,7 +118,7 @@ if(isset($_POST['submit'])){
 
 	    
 		//only allow png ,jpg,jpeg,gif
-		if(($file_ext!='.png')&&($file_ext!='.jpg')&&($file_ext!='.jpeg')&&($file_ext!=['.gif']))
+		if(($file_ext!='.png')&&($file_ext!='.jpg')&&($file_ext!='.jpeg')&&($file_ext!='.gif'))
 		{
 			throw new Exception("only jpg,jpeg,png and gif format are allowed");
 		}
