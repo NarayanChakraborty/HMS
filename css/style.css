@@ -1127,7 +1127,8 @@ a.callbacks1_s3.active,a.callbacks1_s3:focus{
     width: 24.5%;
 }
 .about-team-grids img {
-	width: 100%;
+	width:100%;
+	height:280px;
 }
 .about-team-grids h4 {
     color: #DEDDDD;
@@ -2872,6 +2873,9 @@ div.pagination span.disabled {
 
 
 
-
+.imageview{
+	width:250px;
+	height:280px;
+}
 
 /*Narayan*/

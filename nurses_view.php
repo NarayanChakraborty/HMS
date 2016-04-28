@@ -161,7 +161,7 @@ header('location: index.php');
 			
 			<div class="team-info">
 				<div class="col-md-4 about-team-grids" style="margin:15px;">
-					<img src="images/n1.jpg" alt=""/>
+					<img src="images/nurses_image/<?php echo $row2['e_image'];?>" alt=""/>
 					<div class="team-text">
 						<h4><span><?php echo $row2['e_name']; ?> </span></h4>
 						<p>Type:<?php echo $row1['nurse_type']?></p>

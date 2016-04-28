@@ -166,8 +166,8 @@ header('location: index.php');
 										?>
 			
 			<div class="team-info">
-				<div class="col-md-4 about-team-grids"style="margin:10px;">
-					<img src="images/d1.jpg" alt=""/>
+				<div class="col-md-4 about-team-grids">
+					<img src="images/doctors_image/<?php echo $row2['e_image'];?>" alt=""/>
 					<div class="team-text">
 						<h4> <?php echo $row2['e_name']; ?> </h4>
 						<p>Department:<?php 
