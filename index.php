@@ -3,14 +3,7 @@ include('config.php');
 if(isset($_POST['login']))
 {
     try{
-	   if(empty($_POST['username']))
-	   {
-	    throw new Exception('Username can not be empty');
-	   }
-	   	   if(empty($_POST['password']))
-	   {
-	    throw new Exception('Password can not be empty');
-	   }
+
 	   $num=0;
 	   $password=$_POST['password'];
 	   $password=md5($password);
@@ -28,7 +21,7 @@ if(isset($_POST['login']))
 	  }
 	  else
 	  {
-	   throw new Exception('Invalid Username and/or password');
+	   throw new Exception('Invalid Information');
 	   }
 	}
 	catch(Exception $e)
@@ -43,25 +36,51 @@ if(isset($_POST['login']))
 	<!--banner-->
 	<div class="banner">
 		<div class="container" >
+		
+
+		
+		
 			<section class="slider">
+				
 					<ul >
+					
+					
+					
 						<li >
-							<div class="banner-info">
-								<?php
+						
+						
+																		<?php
 								if(isset($error_msg))
 								{
-								  echo $error_msg;
+									?>
+								      <div style="width:400px;text-align:center;margin:0 auto;" class="alert alert-block alert-danger fade in" >
+                          <button  data-dismiss="alert" class="close close-sm" type="button">
+                          <i class="icon-remove">x</i>
+                          </button>
+                          <strong>Opps!&nbsp; </strong><?php echo $error_msg?>
+                       </div>
+					   <?php
 								}
 								?>
-									
+						
+							<div class="banner-info">
+
 					<div id="page-wrapper" >
+					
+					
+					
+					
 					<div class="main-page login-page "style="margin-top:-80px;margin-bootom:30px;">
 					<div class="widget-shadow">
 					<div class="login-body">
 
 						<form action="index.php" method="POST">
-							<input type="text" class="user" name="username" placeholder="Enter your Name" required="">
-							<input type="password" name="password" class="lock" placeholder="password">
+						<div class="form-group">
+							<input type="text" class="form-control" name="username" id="inputName" placeholder="Enter Your name" required>
+							</div>
+							<div class="form-group">
+							<input type="password" data-toggle="validator" data-minlength="6" class="form-control"  name="password"placeholder="Enter Your Password" required>
+							</div>
 							<input type="submit" name="login" value="Sign In">
 						</form>
 					</div>

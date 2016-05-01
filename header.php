@@ -71,9 +71,8 @@ Author: SN Chakraborty
 						    
 							<li><a href="#" class="dropdown-toggle link link--yaku" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span>A</span><span>D</span><span>M</span><span>I</span><span>N</span><span class="caret"></span></a>
 								<ul class="dropdown-menu">
-									<li><a class="hvr-bounce-to-bottom" href="gallery.html">View Profile</a></li>
-									<li><a class="hvr-bounce-to-bottom" href="gallery.html">Edit Profile</a></li>
-									<li><a class="hvr-bounce-to-bottom" href="gallery.html">Change Password</a></li>  
+								
+									<li><a class="hvr-bounce-to-bottom" href="change_password.php">Change Password</a></li>  
 									<li><a class="hvr-bounce-to-bottom" href="logout.php">Log Out</a></li>  
 								</ul>
 							</li>

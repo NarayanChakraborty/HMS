@@ -57,5 +57,8 @@
 	<!----------------------------------->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="js/bootstrap.js"></script>
+	<!--validator js-->
+	<script src="js/validator.min.js"></script>
+	<!--//validator js-->
 </body>
 </html>

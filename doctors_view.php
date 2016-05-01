@@ -27,7 +27,6 @@ header('location: index.php');
                     
                    	<!--about-team-->
 	<div class="about-team"> 
-		<div class="container">
 			<h3 class="title1">Meet Our <span>Doctors</span></h3>
 			
 									<?php 
@@ -198,7 +197,6 @@ header('location: index.php');
 										   }
 										   }
 										   ?>
-		</div>
 	</div>
 	<!--//about-team-->				
 		

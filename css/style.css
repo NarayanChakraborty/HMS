@@ -2801,7 +2801,7 @@ h3.title1 {
 /*button  */
 
 #button{
-	font-size: 1.7em;
+	font-size: 1.8em;
     letter-spacing: 2px;
     font-family: 'Abel-Regular';
 	width:250px;
@@ -2879,3 +2879,11 @@ div.pagination span.disabled {
 }
 
 /*Narayan*/
+
+/*Form*/
+
+.form-control {
+    border-radius: inherit;
+}
+
+/*===================*/
