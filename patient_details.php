@@ -28,8 +28,6 @@
 											<th>Patient Name</th>
                                             <th>Contact Number</th>
 											<th>Email</th>
-                                            <th>National ID</th>
-											<th>Sex</th>
 											<th>Doctor Name</th>
 											<th>Room ID</th>
 											<th>Entry</th>
@@ -53,8 +51,6 @@
                                            
                                             <td><?php echo $row['p_contact_no'];?></td>
 											<td class="center"><?php echo $row['p_email_id']; ?></td>
-                                            <td class="center"><?php echo $row['p_nid']; ?></td>
-											<td class="center"><?php  echo $row['p_sex']; ?></td>
 											<td class="center">
 											
 											<?php 
@@ -82,12 +78,15 @@
 											  <!--Fancy Box-->
 													  
 													  <div id="inline<?php echo $row['p_id'];?>" style="display:none;width:700px;margin:10px 30px">
-														<h2>Hello</h2>
-														
-											<h4>Patient Name :<?php echo $row['p_id']; ?></h4>
-                                            <h4>Contact Number :<?php echo $row['p_contact_no']; ?></h4>
-											<h4>Email: <?php echo $row['p_email_id']; ?></h4>
-                                            <h4>National ID : <?php echo $row['p_nid']; ?></h4>
+														<h3 style= "border-bottom: 2px solid #295498; color:#0C86AC;margin-bottom:10px;" >Patient Details</h3>	
+											<h4>Patient Name </h4><p><?php echo $row['p_name']; ?></p>
+											<h4>Patient ID </h4><p><?php echo $row['p_id']; ?></p>
+                                            <h4>Contact Number </h4></p><?php echo $row['p_contact_no']; ?></p>
+											<h4>Email</h4><p><?php echo $row['p_email_id']; ?></p>
+											<h4>Sex</h4><p><?php echo $row['p_sex']; ?></p>
+                                            <h4>National ID </h4> <p><?php echo $row['p_nid']; ?></p>
+											<img src="images/patients_nid/<?php echo $row['p_nid_image'];?>" width="450" height="400">	
+											<h4>Entry Date :</h4><p> <?php echo $row['p_entry_date']; ?></p>
 										
 														
 														

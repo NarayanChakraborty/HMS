@@ -85,15 +85,28 @@ header('location: index.php');
 											?>
 											
 											</td>
-                                            <td class="center"><?php echo $row2['e_nid']; ?><</td>
+                                            <td class="center"><?php echo $row2['e_nid']; ?></td>
 											
 											<td>
 										      <div class="btn-group-sm">
-											  <a class="btn btn-primary fancybox" href="#inline1" title="view" ><i class="glyphicon glyphicon-asterisk"></i></a>
+											  <a class="btn btn-primary fancybox" href="#inline<?php echo $row1['doctor_id'];?>" title="view" ><i class="glyphicon glyphicon-asterisk"></i></a>
 											  <!--Fancy Box-->
 													  
-													  <div id="inline1" style="display:none;width:700px;margin:10px 30px">
-														<h2>Hello</h2>
+											<div id="inline<?php echo $row1['doctor_id'];?>" style="display:none;width:700px;margin:10px 30px">
+											<h3 style= "border-bottom: 2px solid #295498; color:#0C86AC;margin-bottom:10px;" ><strong>Doctor Details &nbsp;</strong> <?php echo $row2['e_name']; ?></h3>	
+											<img src="images/doctors_image/<?php echo $row2['e_image'];?>" width="450" height="400"><br>	
+											<strong>Doctor's ID :</strong><p><?php echo $row1['doctor_id']; ?></p>
+											<strong>Qualifications </strong><p><?php echo $row1['doctor_qualification']; ?></p>
+                                            <strong>Contact Number</strong></p><?php echo $row2['e_contact_no']; ?></p>
+											<strong>Email</strong><p><?php echo $row2['e_email_id']; ?></p>
+											<strong>Sex</strong><p><?php echo $row2['e_sex']; ?></p>
+											<strong>Department</strong><p><?php echo $result3['dept_name']; ?></p>
+											<strong>Type</strong><p><?php echo $row1['doctor_type']; ?></p>
+                                            <strong>National ID </strong> <p><?php echo $row2['e_nid']; ?></p>
+											<img src="images/doctors_nid/<?php echo $row2['e_nid_image'];?>" width="450" height="400">	
+									
+										
+														
 														
 													  </div>
 													  <!--Fancy box End-->
