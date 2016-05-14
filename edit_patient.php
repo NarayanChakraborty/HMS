@@ -19,14 +19,35 @@ header('location: index.php');
 		 $p_doctor_id=0;
 if(isset($_POST['submit'])){
   try {
-
-
+    if(empty($_POST['p_name']))
+    {
+      throw new Exception("Patient Name Cannot be empty!");   
+    }
+    if(empty($_POST['p_contact_no']))
+    {
+      throw new Exception("Patient Contact No can't be empty!");   
+    }
+   /* if(empty($_POST['p_email']))
+    {
+      throw new Exception("Patient email Cannot be empty!");   
+    }*/
+    if(empty($_POST['p_nid']))
+    {
+      throw new Exception("Patient national ID  Cannot be empty!");   
+    }
 
     if(empty($_POST['p_room_id']))
     {
      $p_room_id=0;   
     }    
-
+	if(empty($_POST['p_doctor_id']))
+    {
+      throw new Exception("Doctor ID Cannot be empty!!");   
+    }  
+	if(empty($_POST['p_sex']))
+    {
+      throw new Exception("Sex name Cannot be empty!!");   
+    }
 			
 			/*---------------------------------Image Upload------------------------------*/
 	
@@ -129,7 +150,7 @@ if(isset($_POST['submit'])){
 		
 			<div class="col-md-6 validation-grids widget-shadow" style="padding-top:20px;"data-example-id="basic-forms"> 
 							<div class="form-title">
-								<h4><u>Patient Entry Form :</u></h4>
+								<h4><u>Patient Information Edit Form :</u></h4>
 								
 								<?php
                       if(isset($error_message)){
@@ -156,34 +177,26 @@ if(isset($_POST['submit'])){
 										
 							</div><br>
 							<div class="form-body"  >
-							
-								<form action="entry_patient.php" method="post" data-toggle="validator" enctype="multipart/form-data">
+								<form action="entry_patient.php" method="post"  enctype="multipart/form-data">
 									<div class="form-group">
 									    <label>Enter Patient Name:</label>
-										
 										<input type="text" class="form-control" id="inputName" placeholder="Username" name="p_name" required>
 									</div>
 									<div class="form-group">
 									<label>Contact No:</label>
-									  <input type="number" min="1" data-toggle="validator" data-minlength="12" class="form-control"  placeholder="Contact Number"
-									  
+									  <input type="text" data-toggle="validator" data-length="12" class="form-control"  placeholder="Contact Number"
                                      	name="p_contact_no" required>
-										<span class="help-block with-errors">Please Enter Your 12 Digit Mobile Number</span>
 									</div>
-								   
-								  <div class="form-group has-feedback">
+								
 									<label>Enter Valid Email:</label>
 										<input type="email" class="form-control" id="inputEmail" placeholder="Email" 
-										name="p_email"data-error="Opps, that email address is invalid" required>
+										name="p_email" data-error="Bruh, that email address is invalid">
 										<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
-										<span class="help-block with-errors">Please enter a valid email address</span>
-									</div>
 
 								   
 									<label>Enter National ID:</label>
-									  <input type="" min="0" data-toggle="validator" data-minlength="17" class="form-control " 
+									  <input type="text" data-toggle="validator" data-length="17" class="form-control" 
 									  name="p_nid" id="inputPassword" placeholder="NID Number" required>
-									  <span class="help-block with-errors">Please Enter Your 17 Digit NID Number</span>
 
 								   <label>Attach NID Image</label>
 								   <input type="file" id="exampleInputFile" name="p_nid_image"> 
@@ -192,7 +205,7 @@ if(isset($_POST['submit'])){
 									<div class="form-group">
 									<label>Room ID:</label>
 
-									<input type="number" min="0" class="form-control" name="p_room_id" placeholder="Room Number" >
+									<input type="text" data-toggle="validator" data-minlength="3" class="form-control" name="p_room_id" placeholder="Room Number" >
                                     </div>
 									
 									
@@ -201,7 +214,7 @@ if(isset($_POST['submit'])){
 									
 									
 									<select class="form-control m-bot15" name="p_doctor_id'" required>
-									  <option>Select Doctor Name</option>
+									  <option></option>
 									<?php 
 											$statement1 = $db->prepare("SELECT * FROM doctor_details");
 										    $statement1->execute();
@@ -243,11 +256,9 @@ if(isset($_POST['submit'])){
 											</label>
 										</div>
 									</div>
-									<div class="bottom">
-											<div class="form-group">
-												<button type="submit" name="submit" style="width:200px;margin-left:110px;margin-top:50px;"class="btn btn-primary disabled">Login</button>
-											</div>
-										</div>
+									<div class="form-group">
+										<input type="submit"  name="submit" style="width:200px;margin-left:110px;margin-top:50px;" value="save">
+									</div>
 								</form>
 							</div>
 						</div>

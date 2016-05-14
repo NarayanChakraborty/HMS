@@ -94,7 +94,7 @@
 													  <!--Fancy box End-->
 											  
 
-											  <a class="btn btn-success" href="patient_edit.php"><i class="glyphicon glyphicon-pencil"></i></a>
+											  <a class="btn btn-success" href="edit_patient.php"><i class="glyphicon glyphicon-pencil"></i></a>
 									
 											  
 											  
