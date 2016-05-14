@@ -17,31 +17,7 @@ header('location: index.php');
 
 if(isset($_POST['submit'])){
   try {
-    if(empty($_POST['n_name']))
-    {
-      throw new Exception("Nurse Name Cannot be empty!");   
-    }
-    if(empty($_POST['n_contact_no']))
-    {
-      throw new Exception("Nurse Contact No can't be empty!");   
-    }
-    if(empty($_POST['n_email']))
-    {
-      throw new Exception("Nurse email Cannot be empty!");   
-    }     
-	if(empty($_POST['n_type']))
-    {
-      throw new Exception("Nurse Type Cannot be empty!");   
-    }   
-    if(empty($_POST['n_nid']))
-    {
-      throw new Exception("Nurse national ID  Cannot be empty!");   
-    } 
-	if(empty($_POST['n_sex']))
-    {
-      throw new Exception("Sex name Cannot be empty!!");   
-    }
-			
+   
 			
 					/*---------------------------------Image Upload for doctor's Image ------------------------------*/
 	
@@ -190,21 +166,24 @@ if(isset($_POST['submit'])){
 								
 							</div><br>
 							<div class="form-body">
-								<form action="entry_nurse.php" method="post"  enctype="multipart/form-data">
+								<form action="entry_nurse.php" method="post" data-toggle="validator" enctype="multipart/form-data">
 									<div class="form-group">
 									    <label>Enter Nurse Name:</label>
-										<input type="text" class="form-control" id="inputName" name="n_name" placeholder="Username" required>
+										<input type="text" class="form-control"data-toggle="validator" id="inputName" name="n_name" placeholder="Username" required>
 									</div>
 
 									<div class="form-group">
 									<label>Contact No:</label>
-									  <input type="text" data-toggle="validator" data-minlength="12" class="form-control" name="n_contact_no" placeholder="Contact Number" required>
+									  <input type="number" min="1" data-toggle="validator" data-minlength="12" class="form-control" name="n_contact_no" placeholder="Contact Number" required>
+									<span class="help-block with-errors">Please Enter Your 12 Digit Mobile Number</span>
 									</div>
 									
-									<div class="form-group has-feedback">
+										  <div class="form-group has-feedback">
 									<label>Enter Valid Email:</label>
-										<input type="email" class="form-control" id="inputEmail" name="n_email" placeholder="Email" data-error="Bruh, that email address is invalid">
+										<input type="email" class="form-control" id="inputEmail" placeholder="Email" 
+										name="n_email"data-error="Opps, that email address is invalid" required>
 										<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+										<span class="help-block with-errors">Please enter a valid email address</span>
 									</div>
 									 <div class="form-group">
 								   <label >Nurse Image</label>
@@ -224,6 +203,7 @@ if(isset($_POST['submit'])){
 									<div class="form-group">
 									<label>Enter National ID:</label>
 									  <input type="text" data-toggle="validator" data-minlength="12" class="form-control" name="n_nid" placeholder="NID Number" required>
+									 <span class="help-block with-errors">Please Enter Your 17 Digit NID Number</span>
 									</div>
 									
 								   <div class="form-group">
@@ -247,9 +227,11 @@ if(isset($_POST['submit'])){
 											</label>
 										</div>
 									</div>
-								<div class="form-group">
-										<input type="submit"  name="submit" style="width:200px;margin-left:110px;" value="save">
-									</div>
+								<div class="bottom">
+											<div class="form-group">
+												<button type="submit" name="submit" style="width:200px;margin-left:110px;margin-top:50px;"class="btn btn-primary disabled">Save</button>
+											</div>
+								</div>
 								</form>
 							</div>
 						</div>

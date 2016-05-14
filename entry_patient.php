@@ -245,7 +245,7 @@ if(isset($_POST['submit'])){
 									</div>
 									<div class="bottom">
 											<div class="form-group">
-												<button type="submit" name="submit" style="width:200px;margin-left:110px;margin-top:50px;"class="btn btn-primary disabled">Login</button>
+												<button type="submit" name="submit" style="width:200px;margin-left:110px;margin-top:50px;"class="btn btn-primary disabled">Save</button>
 											</div>
 										</div>
 								</form>
