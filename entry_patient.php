@@ -179,15 +179,17 @@ if(isset($_POST['submit'])){
 										<span class="help-block with-errors">Please enter a valid email address</span>
 									</div>
 
-								   
+								   <div class="form-group">
 									<label>Enter National ID:</label>
 									  <input type="" min="0" data-toggle="validator" data-minlength="17" class="form-control " 
 									  name="p_nid" id="inputPassword" placeholder="NID Number" required>
 									  <span class="help-block with-errors">Please Enter Your 17 Digit NID Number</span>
-
+									  </div>
+                                    <div class="form-group">
 								   <label>Attach NID Image</label>
 								   <input type="file" id="exampleInputFile" name="p_nid_image"> 
 								   <p class="help-block">Input National ID Image.</p>
+								   </div>
 								   
 									<div class="form-group">
 									<label>Room ID:</label>

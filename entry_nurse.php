@@ -200,11 +200,12 @@ if(isset($_POST['submit'])){
 									</select>
 									</div>
 								   
-									<div class="form-group">
+									 <div class="form-group">
 									<label>Enter National ID:</label>
-									  <input type="text" data-toggle="validator" data-minlength="12" class="form-control" name="n_nid" placeholder="NID Number" required>
-									 <span class="help-block with-errors">Please Enter Your 17 Digit NID Number</span>
-									</div>
+									  <input type="" min="0" data-toggle="validator" data-minlength="17" class="form-control " 
+									  name="n_nid" id="inputPassword" placeholder="NID Number" required>
+									  <span class="help-block with-errors">Please Enter Your 17 Digit NID Number</span>
+									  </div>
 									
 								   <div class="form-group">
 								   <label>Attach NID Image</label>

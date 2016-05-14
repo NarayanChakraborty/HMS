@@ -195,7 +195,7 @@ if(isset($_POST['submit'])){
 								
 							</div><br>
 							<div class="form-body">
-								<form action="entry_doctor.php" method="post"  enctype="multipart/form-data">
+								<form action="entry_doctor.php" method="post" data-toggle="validator" enctype="multipart/form-data">
 									<div class="form-group">
 									    <label>Enter Doctor Name:</label>
 										<input type="text" class="form-control" id="inputName" name="d_name" placeholder="Username" required>
@@ -205,16 +205,16 @@ if(isset($_POST['submit'])){
 									<label>Contact No:</label>
 									  <input type="text" data-toggle="validator" data-minlength="12" class="form-control"  placeholder="Contact Number"
                                      	name="d_contact_no" required>
+										<span class="help-block with-errors">Please Enter Your 12 Digit Mobile Number</span>
 									</div>
 								
+											  <div class="form-group has-feedback">
 									<label>Enter Valid Email:</label>
 										<input type="email" class="form-control" id="inputEmail" placeholder="Email" 
-										name="d_email" data-error="Bruh, that email address is invalid" required>
+										name="d_email"data-error="Opps, that email address is invalid" required>
 										<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
-
-									
-									
-									<form data-toggle="validator">
+										<span class="help-block with-errors">Please enter a valid email address</span>
+									</div>
 									<div class="form-group">
 									    <label>Qualifications:</label>
 										<input type="text" class="form-control" id="inputName" name="d_qualifications" placeholder="Degrees" required>
@@ -230,7 +230,7 @@ if(isset($_POST['submit'])){
 									<label >Depertment</label>
 									<div >
 										<select class="form-control m-bot15" name="d_department_name" required>
-									  <option></option>
+									  <option>Select Depertment</option>
 									  <?php
 									  $statement = $db->prepare("SELECT * FROM departments");
 									  $statement->execute();
@@ -246,7 +246,7 @@ if(isset($_POST['submit'])){
 								   </div>
 								   
 								   	 <div class="form-group">
-									<label >Type</label>
+									<label >Doctor Type</label>
 									<div >
 										<select class="form-control m-bot15" name="d_type" required>
 									  <option value="Permanent">Permanent</option>
@@ -255,10 +255,12 @@ if(isset($_POST['submit'])){
 									</select>
 									</div>
 								   </div>
-									<div class="form-group">
+								 <div class="form-group">
 									<label>Enter National ID:</label>
-									  <input type="text" data-toggle="validator" data-minlength="12" class="form-control" name="d_nid" placeholder="NID Number" required>
-									</div>
+									  <input type="" min="0" data-toggle="validator" data-minlength="17" class="form-control " 
+									  name="d_nid" id="inputPassword" placeholder="NID Number" required>
+									  <span class="help-block with-errors">Please Enter Your 17 Digit NID Number</span>
+									  </div>
 									
 								   <div class="form-group">
 								   <label>Attach NID Image</label>
@@ -281,10 +283,11 @@ if(isset($_POST['submit'])){
 											</label>
 										</div>
 									</div>
-								<div class="form-group">
-										<input type="submit"  name="submit" style="width:200px;margin-left:110px;" value="save">
-									</div>
-								</form>
+											<div class="bottom">
+											<div class="form-group">
+												<button type="submit" name="submit" style="width:200px;margin-left:110px;margin-top:50px;"class="btn btn-primary disabled">Save</button>
+											</div>
+								</div>
 							</div>
 						</div>
 		
