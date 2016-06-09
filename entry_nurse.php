@@ -135,7 +135,7 @@ if(isset($_POST['submit'])){
 		
 			<div class="col-md-6 validation-grids widget-shadow" style="padding-top:20px;" data-example-id="basic-forms"> 
 							<div class="form-title">
-								<h4><u>Nurse Entry Form :</u></h4>
+								<h4 style="color:#337ab7;font-size:18px;padding:10px;"  class="btn active"><u>Nurse Entry Form </u></h4>
 								
 																
 								<?php
@@ -174,8 +174,8 @@ if(isset($_POST['submit'])){
 
 									<div class="form-group">
 									<label>Contact No:</label>
-									  <input type="number" min="1" data-toggle="validator" data-minlength="12" class="form-control" name="n_contact_no" placeholder="Contact Number" required>
-									<span class="help-block with-errors">Please Enter Your 12 Digit Mobile Number</span>
+									  <input type="number" min="1" data-toggle="validator" data-minlength="11" class="form-control" name="n_contact_no" placeholder="Contact Number" required>
+									<span class="help-block with-errors">Please Enter Your 11 Digit Mobile Number</span>
 									</div>
 									
 										  <div class="form-group has-feedback">

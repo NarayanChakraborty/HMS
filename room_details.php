@@ -26,8 +26,32 @@ header('location: index.php');
 		
 		<h2 style="margin-bottom:10px;">Rooms Information</h2>
 		<div class="panel panel-default">
+		
+		
+		             <div><br>
+					    <h4 style="margin-left:20px;">Room Facilities</h4>
+						<p style="margin-left:20px;">Our facilities include:</p>
+					   <ol>
+					      <li>Private and shared accommodation</li>
+<li>En-suite bathrooms</li>
+<li>Nurse call handset at each bed</li>
+<li>Personal televisions</li>
+<li>Direct dial bedside phones</li>
+<li>Free local calls</li>
+<li>Hudsons Coffee</li>
+</ol>
+					 
+					 
+					 
+					 
+					 
+					 </div>
+		
+		
+		
+		
                         <div class="panel-heading">
-                             Advanced Tables
+                             All Rooms
                         </div>
                         <div class="panel-body">
                             <div class="table-responsive">

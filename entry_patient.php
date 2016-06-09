@@ -25,7 +25,11 @@ if(isset($_POST['submit'])){
     if(empty($_POST['p_room_id']))
     {
      $p_room_id=0;   
-    }    
+    }  
+    if(empty($_POST['p_doctor_id']))
+	{
+		throw new Exception("Please Select a Doctor Name");
+	}		
 
 			
 			/*---------------------------------Image Upload------------------------------*/
@@ -80,7 +84,7 @@ if(isset($_POST['submit'])){
 		  }
 		  else
 		  {
-		   throw new Exception('Invalid');
+		   throw new Exception('Invalid Room ID.');
 		   }
 		   
 		}
@@ -97,7 +101,7 @@ if(isset($_POST['submit'])){
 		  }
 		  else
 		  {
-		   throw new Exception('Invalid Doctor ID');
+		   throw new Exception('Select a Valid Doctor Name');
 		   }
 		   
 		}
@@ -106,6 +110,7 @@ if(isset($_POST['submit'])){
 		$statement1=$db->prepare("insert into patient_details(p_name,p_contact_no,p_email_id,p_nid,p_nid_image,p_room_id,p_doctor_id,p_sex,p_entry_date,p_release_date) values(?,?,?,?,?,?,?,?,?,?)");
 		   $statement1->execute(array($_POST['p_name'],$_POST['p_contact_no'],$_POST['p_email'],$_POST['p_nid'],$f1,$p_room_id,$p_doctor_id,$_POST['p_sex'],$entry_date,0));
 		   
+		   header('location: entry_slip.php');
 		   $success_message="Patient details is inserted succesfully";
 		
   }catch (Exception $e) {
@@ -129,7 +134,7 @@ if(isset($_POST['submit'])){
 		
 			<div class="col-md-6 validation-grids widget-shadow" style="padding-top:20px;"data-example-id="basic-forms"> 
 							<div class="form-title">
-								<h4><u>Patient Entry Form :</u></h4>
+								<h4 style="color:#337ab7;font-size:18px;padding:10px;"  class="btn active"><u>Patient Entry Form </u></h4>
 								
 								<?php
                       if(isset($error_message)){
@@ -165,10 +170,10 @@ if(isset($_POST['submit'])){
 									</div>
 									<div class="form-group">
 									<label>Contact No:</label>
-									  <input type="number" min="1" data-toggle="validator" data-minlength="12" class="form-control"  placeholder="Contact Number"
+									  <input type="number" min="1" data-toggle="validator" data-minlength="11" class="form-control"  placeholder="Contact Number"
 									  
                                      	name="p_contact_no" required>
-										<span class="help-block with-errors">Please Enter Your 12 Digit Mobile Number</span>
+										<span class="help-block with-errors">Please Enter Your 11 Digit Mobile Number</span>
 									</div>
 								   
 								  <div class="form-group has-feedback">
@@ -192,9 +197,11 @@ if(isset($_POST['submit'])){
 								   </div>
 								   
 									<div class="form-group">
-									<label>Room ID:</label>
-
-									<input type="number" min="0" class="form-control" name="p_room_id" placeholder="Room Number" >
+									<label>Room ID: &nbsp; &nbsp;</label> <span>
+									<a href="room_details.php"style="background-color:#337ab7;color:#fff;padding:1px;font-size:12px;
+                                    border: 1px solid transparent;    display: inline-block;" class="btn">Check Room Stauts Here</a></span>
+									<input type="number" min="0" class="form-control" style="margin-top:3px;"name="p_room_id" placeholder="Room Number" >
+									
                                     </div>
 									
 									
@@ -202,8 +209,8 @@ if(isset($_POST['submit'])){
 									<label>Doctor Name:</label>
 									
 									
-									<select class="form-control m-bot15" name="p_doctor_id'" required>
-									  <option>Select Doctor Name</option>
+									<select class="form-control m-bot15" placeholder="Doctor Name"name="p_doctor_id" required>
+									 <option>Select Doctor</option>
 									<?php 
 											$statement1 = $db->prepare("SELECT * FROM doctor_details");
 										    $statement1->execute();
@@ -221,7 +228,7 @@ if(isset($_POST['submit'])){
 										?>
 									
 									
-									  <option value="<?php echo $row1['doctor_id'];?>"><?php echo $row2['e_name'];?></option>
+									  <option value="<?php echo $row1['doctor_id'];?>" min="1"><?php echo $row2['e_name'];?></option>
 									  
 									  <?php
 										   }

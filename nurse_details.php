@@ -76,8 +76,21 @@ header('location: index.php');
 											  <a class="btn btn-primary fancybox" href="#inline1" title="view" ><i class="glyphicon glyphicon-asterisk"></i></a>
 											  <!--Fancy Box-->
 													  
-													  <div id="inline1" style="display:none;width:700px;margin:10px 30px">
-														<h2>Hello</h2>
+											<div id="inline<?php echo $row1['nurse_id'];?>" style="display:none;width:700px;margin:10px 30px">
+											<h3 style= "border-bottom: 2px solid #295498; color:#0C86AC;margin-bottom:10px;" ><strong>Nurse Details &nbsp; :</strong> <?php echo $row2['e_name']; ?></h3>	
+											<img src="images/nurses_image/<?php echo $row2['e_image'];?>" width="450" height="400"><br>	
+											<strong>Nurse's ID :</strong><p><?php echo $row1['nurse_id']; ?></p>
+											
+                                            <strong>Contact Number</strong></p><?php echo $row2['e_contact_no']; ?></p>
+											<strong>Email</strong><p><?php echo $row2['e_email_id']; ?></p>
+											<strong>Sex</strong><p><?php echo $row2['e_sex']; ?></p>
+					
+											<strong>Type</strong><p><?php echo $row1['nurse_type']; ?></p>
+                                            <strong>National ID </strong> <p><?php echo $row2['e_nid']; ?></p>
+											<img src="images/nurses_nid/<?php echo $row2['e_nid_image'];?>" width="450" height="400">	
+									
+										
+														
 														
 													  </div>
 													  <!--Fancy box End-->

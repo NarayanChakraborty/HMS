@@ -112,30 +112,8 @@ header('location: index.php');
 													  <!--Fancy box End-->
 											  
 
-											  <a class="btn btn-success" href="patient_edit.php"><i class="glyphicon glyphicon-pencil"></i></a>
-											  <a class="btn btn-danger" href="#" title="delete patient" data-toggle="modal" data-target="#patientmodal"><i class="glyphicon glyphicon-remove"></i></a>
-											  
-											 <!-- Modal -->
-													<div id="patientmodal" class="modal fade " role="dialog">
-													  <div class="modal-dialog">
-
-														<!-- Modal content-->
-														<div class="modal-content">
-														  <div class="modal-header">
-															<button type="button" class="close" data-dismiss="modal">&times;</button>
-															<h4 class="modal-title">DELETE Confirmation</h4>
-														  </div>
-														  <div class="modal-body">
-															<h4>Are You Confirm To Delete This Element?</h4>
-														  </div>
-														  <div class="modal-footer">
-															<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-															<a class="btn btn-danger btn-ok" href="product_delete.php?id=<?php echo $row['p_id']; ?>" >Confirm</a>
-														  </div>
-														</div>
-
-													  </div>
-													</div> 
+											  <a class="btn btn-success" href="edit_doctor.php?eid=<?php echo $row2['e_id']; ?>&did=<?php echo $row1['doctor_id']; ?>"><i class="glyphicon glyphicon-pencil"></i></a>
+										
 											  
 											  
 											  

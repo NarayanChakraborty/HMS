@@ -6,7 +6,17 @@ if($_SESSION['name']!='snchousebd')
 header('location: index.php');
 }
 ?>	
-
+<?php
+if(!isset($_REQUEST['eid']) ||(!isset($_REQUEST['did'])))
+{
+	header('location:doctor_details.php');
+}
+else
+{
+	$e_id=$_REQUEST['eid'];
+	$d_id=$_REQUEST['did'];
+}
+?>
 
 	<!--banner-->
 <?php include("header.php");?>
@@ -17,40 +27,13 @@ header('location: index.php');
 
 if(isset($_POST['submit'])){
   try {
-    if(empty($_POST['d_name']))
-    {
-      throw new Exception("Doctor Name Cannot be empty!");   
-    }
-    if(empty($_POST['d_contact_no']))
-    {
-      throw new Exception("Doctor Contact No can't be empty!");   
-    }
-    if(empty($_POST['d_email']))
-    {
-      throw new Exception("Doctor email Cannot be empty!");   
-    }   
-	if(empty($_POST['d_qualifications']))
-    {
-      throw new Exception("Doctor Qualifications Cannot be empty!");   
-    }    
-	if(empty($_POST['d_type']))
-    {
-      throw new Exception("Doctor Type Cannot be empty!");   
-    }   
-	if(empty($_POST['d_department_name']))
-    {
-      throw new Exception("Doctors department name Cannot be empty!");   
-    }
-    if(empty($_POST['d_nid']))
-    {
-      throw new Exception("Doctor national ID  Cannot be empty!");   
-    } 
-	if(empty($_POST['d_sex']))
-    {
-      throw new Exception("Sex name Cannot be empty!!");   
-    }
-			
-			
+    
+
+			if(($_POST['d_image'])||$_POST['d_nid_image'])
+			{
+				throw new Exception("You Must Input the image Fields");
+			}
+              				
 					/*---------------------------------Image Upload for doctor's Image ------------------------------*/
 	
 	if(getimagesize($_FILES['d_image']['tmp_name'])==FALSE)
@@ -63,7 +46,7 @@ if(isset($_POST['submit'])){
 		
 		
 	    //To generate id(next auto increment value from tbl_post)
-		$statement=$db->prepare("show table status like 'doctor_details' ");
+		$statement=$db->prepare("show table status like 'employee_details' ");
 		$statement->execute();
 		$result=$statement->fetchAll();
 		foreach($result as $row)
@@ -81,6 +64,21 @@ if(isset($_POST['submit'])){
 		{
 			throw new Exception("only jpg,jpeg,png and gif format are allowed");
 		}
+		
+		
+				 //To unlink previous image
+				
+				
+                        $statement2=$db->prepare("select * from employee_details where e_id=?");
+						$statement2->execute(array($e_id));
+						$result2=$statement2->fetchAll(PDO::FETCH_ASSOC);
+						foreach($result2 as $row2)
+						{
+							$real_path= "images/doctors_image/".$row2['e_image'];
+						    unlink($real_path);
+						}
+		 
+		 
 	     
         //upload image to a folder
         move_uploaded_file($_FILES['d_image']['tmp_name'],"images/doctors_image/".$f1);		
@@ -96,7 +94,7 @@ if(isset($_POST['submit'])){
 	
 	if(getimagesize($_FILES['d_nid_image']['tmp_name'])==FALSE)
 		 {
-		   throw new Exception("Please select an image"); //access only image
+		   throw new Exception("Please select an image(nid)"); //access only image
 		 }
 		 if($_FILES['d_nid_image']['size']>2000000){
 		 throw new Exception("Sorry,your file is too large"); //image file must be<2MB
@@ -104,7 +102,7 @@ if(isset($_POST['submit'])){
 		
 		
 	    //To generate id(next auto increment value from tbl_post)
-		$statement=$db->prepare("show table status like 'doctor_details' ");
+		$statement=$db->prepare("show table status like 'employee_details' ");
 		$statement->execute();
 		$result=$statement->fetchAll();
 		foreach($result as $row)
@@ -123,6 +121,21 @@ if(isset($_POST['submit'])){
 			throw new Exception("only jpg,jpeg,png and gif format are allowed");
 		}
 	     
+		 
+		  //To unlink previous image
+				
+				
+                        $statement2=$db->prepare("select * from employee_details where e_id=?");
+						$statement2->execute(array($e_id));
+						$result2=$statement2->fetchAll(PDO::FETCH_ASSOC);
+						foreach($result2 as $row2)
+						{
+							$real_path= "images/doctors_nid/".$row2['e_nid_image'];
+						    unlink($real_path);
+						}
+		 
+		 
+		 
         //upload image to a folder
         move_uploaded_file($_FILES['d_nid_image']['tmp_name'],"images/doctors_nid/".$f2);		
 	
@@ -131,13 +144,12 @@ if(isset($_POST['submit'])){
 
 		
 		
-		$statement1=$db->prepare("insert into employee_details(e_name,e_contact_no,e_email_id,e_image,e_nid,e_nid_image,e_sex) values(?,?,?,?,?,?,?)");
-		   $statement1->execute(array($_POST['d_name'],$_POST['d_contact_no'],$_POST['d_email'],$f1,$_POST['d_nid'],$f2,$_POST['d_sex']));
+		$statement1=$db->prepare("update  employee_details set e_name=?,e_contact_no=?,e_email_id=?,e_image=?,e_nid=?,e_nid_image=?,e_sex=? where e_id=?");
+		   $statement1->execute(array($_POST['d_name'],$_POST['d_contact_no'],$_POST['d_email'],$f1,$_POST['d_nid'],$f2,$_POST['d_sex'],$e_id));
 		   
-           $last_id = $db->lastInsertId();
 		   
-		   $statement2=$db->prepare("insert into doctor_details(employee_id,doctor_qualification,doctor_type,department) values(?,?,?,?)");
-		   $statement2->execute(array($last_id,$_POST['d_qualifications'],$_POST['d_type'],$_POST['d_department_name']));
+		   $statement2=$db->prepare("update  doctor_details set employee_id=?,doctor_qualification=?,doctor_type=?,department=? where doctor_id=?");
+		   $statement2->execute(array($e_id,$_POST['d_qualifications'],$_POST['d_type'],$_POST['d_department_name']),$d_id);
 		   
 		   
 		   
@@ -164,7 +176,7 @@ if(isset($_POST['submit'])){
 		
 			<div class="col-md-6 validation-grids widget-shadow" style="padding-top:20px;"data-example-id="basic-forms"> 
 							<div class="form-title">
-								<h4 style="color:#337ab7;font-size:18px;padding:10px;"  class="btn active"><u>Doctor Entry Form </u></h4>
+								<h4><u>Doctor Entry Form :</u></h4>
 								
 															
 								<?php
@@ -192,38 +204,77 @@ if(isset($_POST['submit'])){
 								
 								
 								
+								<?php 
+											$statement1 = $db->prepare("SELECT * FROM doctor_details");
+										    $statement1->execute();
+										     $result1=$statement1->fetchAll(PDO::FETCH_ASSOC);
+						                    foreach( $result1 as $row1)
+						                   {
+											   
+											   
+											   
+											$statement2 = $db->prepare("SELECT * FROM employee_details where e_id=?");
+										    $statement2->execute(array($e_id));
+										     $result2=$statement2->fetchAll(PDO::FETCH_ASSOC);
+						                    foreach( $result2 as $row2)
+						                   {
+										    $d_name=$row2['e_name'];
+											$d_contact_no=$row2['e_contact_no'];
+											
+											$d_email_id=$row2['e_email_id'];
+											$d_nid=$row2['e_nid'];
+											$d_nid_image=$row2['e_nid_image'];
+											
+											$d_sex=$row2['e_sex'];
+											$doctor_id=$row1['doctor_id'];
+											$d_qualifications=$row1['doctor_qualification'];
+											$d_type=$row1['doctor_type'];
+											
+											 $department=$row1['department'];  
+										   }
+										   }
+										?>
+								
+								
+								
+								
+								
 								
 							</div><br>
 							<div class="form-body">
-								<form action="entry_doctor.php" method="post" data-toggle="validator" enctype="multipart/form-data">
+								<form action="" method="post" data-toggle="validator" enctype="multipart/form-data">
 									<div class="form-group">
 									    <label>Enter Doctor Name:</label>
-										<input type="text" class="form-control" id="inputName" name="d_name" placeholder="Username" required>
+										<input type="text" class="form-control" value="<?php echo $d_name; ?>" id="inputName" name="d_name" placeholder="Username" required>
 									</div>
 									
 									<div class="form-group">
 									<label>Contact No:</label>
-									  <input type="text" data-toggle="validator" data-minlength="11" class="form-control"  placeholder="Contact Number"
+									  <input type="text" data-toggle="validator" data-minlength="11" value="<?php echo $d_contact_no; ?>" class="form-control"  placeholder="Contact Number"
                                      	name="d_contact_no" required>
 										<span class="help-block with-errors">Please Enter Your 11 Digit Mobile Number</span>
 									</div>
 								
 											  <div class="form-group has-feedback">
 									<label>Enter Valid Email:</label>
-										<input type="email" class="form-control" id="inputEmail" placeholder="Email" 
+										<input type="email" class="form-control" id="inputEmail" value="<?php echo $d_email_id; ?>" placeholder="Email" 
 										name="d_email"data-error="Opps, that email address is invalid" required>
 										<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
 										<span class="help-block with-errors">Please enter a valid email address</span>
 									</div>
 									<div class="form-group">
 									    <label>Qualifications:</label>
-										<input type="text" class="form-control" id="inputName" name="d_qualifications" placeholder="Degrees" required>
+										<input type="text" class="form-control" id="inputName" value="<?php echo $d_qualifications; ?>" name="d_qualifications" placeholder="Degrees" required>
 									</div>
 						
+						
+									<label>Doctor's Previous Image</label>
+						            <img src="images/doctors_image/<?php echo $row2['e_image'];?>" width="450" height="400"><br>
+									
 								   <div class="form-group">
-								   <label>Doctor Image</label>
-								   <input type="file" id="exampleInputFile" name="d_image"> 
-								   <p class="help-block">Input Doctor Image.</p>
+								   <label>Update Doctor's  Image</label>
+								   <input type="file"  id="exampleInputFile" name="d_image"> 
+								   <p class="help-block">You Must Input Doctors Image.</p>
 								   </div> 
 								   
 								   <div class="form-group">
@@ -232,13 +283,18 @@ if(isset($_POST['submit'])){
 										<select class="form-control m-bot15" name="d_department_name" required>
 									  <option>Select Depertment</option>
 									  <?php
-									  $statement = $db->prepare("SELECT * FROM departments");
-									  $statement->execute();
-									  $result = $statement->fetchAll(PDO::FETCH_ASSOC);
-									  foreach ($result as $row) {
-										?>
-									  <option value="<?php echo $row['dept_id'];?>"><?php echo $row['dept_name'];?></option>
-									  <?php
+									  $statement3 = $db->prepare("SELECT * FROM departments");
+									  $statement3->execute();
+									  $result3 = $statement3->fetchAll(PDO::FETCH_ASSOC);
+									  foreach ($result3 as $row3) {
+										  if($row3['dept_id']==$department) {
+										?><option value="<?php echo $row3['dept_id'];?>" selected><?php echo $row3['dept_name'];?></option><?php
+									  }
+									  else
+									  {
+										  ?><option value="<?php echo $row3['dept_id'];?>"><?php echo $row3['dept_name'];?></option><?php
+									  }
+									  
 									  }
 									  ?>
 									</select>
@@ -257,15 +313,20 @@ if(isset($_POST['submit'])){
 								   </div>
 								 <div class="form-group">
 									<label>Enter National ID:</label>
-									  <input type="" min="0" data-toggle="validator" data-minlength="17" class="form-control " 
+									  <input type="" min="0" data-toggle="validator" value="<?php echo $d_nid; ?>" data-minlength="17" class="form-control " 
 									  name="d_nid" id="inputPassword" placeholder="NID Number" required>
 									  <span class="help-block with-errors">Please Enter Your 17 Digit NID Number</span>
 									  </div>
+									  
+									  
+									<label>Previous NID Image</label>
+									<img src="images/doctors_nid/<?php echo $row2['e_nid_image'];?>" width="450" height="400"><br>
+									
 									
 								   <div class="form-group">
-								   <label>Attach NID Image</label>
+								   <label>Update NID Image</label>
 								   <input type="file" id="exampleInputFile" name="d_nid_image"> 
-								   <p class="help-block">Input National ID Image.</p>
+								   <p class="help-block">You Must input National ID Image.</p>
 								   </div> 
 
 									<div class="form-group">

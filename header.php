@@ -37,6 +37,17 @@ Author: SN Chakraborty
 			});
 		});
 </script>
+<script>
+function printPageArea(areaID){
+    var printContent = document.getElementById(areaID);
+    var WinPrint = window.open('', '', 'width=900,height=600');
+    WinPrint.document.write(printContent.innerHTML);
+    WinPrint.document.close();
+    WinPrint.focus();
+    WinPrint.print();
+    WinPrint.close();
+}
+</script>
 <!--//end-smooth-scrolling-->	
 </head>
 <body>
@@ -45,14 +56,15 @@ Author: SN Chakraborty
 		<nav class="navbar navbar-default">
 			<div class="container">
 				<div class="navbar-header navbar-left">
-					<h1><a href="index.html"><img src="images/logo.png" alt="">Patient Care</a>
+					<h1><a href="index2.php"><img src="images/logo.png" alt="">Patient Care</a>
 					<h5 style="margin-left:80px;">Hospital Management System<h5>
 					</h1>
 					<br>
 						
 				</div>
-
-				
+                <div class="header-text navbar-left">
+					<p></p>
+				</div>
 				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
 					<span class="sr-only">Toggle navigation</span>
 					<span class="icon-bar"></span>

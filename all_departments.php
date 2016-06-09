@@ -46,10 +46,7 @@ header('location: index.php');
 	 {
 		 try{
 			 
-			  if(empty($_POST['dept_name']))
-			  {
-				  throw new Exception('Department Name Can not be empty');
-			  }
+			
 			  $dept_name=mysql_real_escape_string($_POST['dept_name']);
 			  $statement2=$db->prepare('insert into departments (dept_name) values(?)');
 			  $statement2->execute(array($dept_name));
@@ -125,9 +122,9 @@ header('location: index.php');
 									  <h4 class="modal-title">Edit This Department Name</h4>
 									</div>
 									<div class="modal-body">
-									  <h4>Brand Name :</h4>
-									  <form method="post" action="" enctype="multipart/form-data">
-										<input type="text"value="<?php echo $row['dept_name'];?>"class="form-control" name="edit_dept_name"><br>
+									  <h4>Department Name :</h4>
+									  <form method="post" data-toggle="validator" action="" enctype="multipart/form-data">
+										<input type="text"value="<?php echo $row['dept_name'];?>"class="form-control" name="edit_dept_name" required><br>
 										<button data-dismiss="modal" class="btn btn-default" type="button">Close</button>
 										<input type="hidden" name="hidden_id_for_edit_dept" value="<?php echo $row['dept_id'];?>">
 										<input type="submit" value="Update" class="btn btn-success" name="form_edit_dept">
@@ -220,9 +217,9 @@ header('location: index.php');
 						
 						
 						
-					<br><br><h3>New Brand Name</h3>
-                    <form enctype="multipart/form-data" method="post">
-                      <input type="text"name="dept_name"class="form-control" placeholder="Type Here.."><br>
+					<br><br><h3>New Department Name</h3>
+                    <form enctype="multipart/form-data" data-toggle="validator" method="post">
+                      <input type="text"name="dept_name"class="form-control" placeholder="Type Here.." required><br>
                       <input type="submit" value="Save" name="form_add_dept"class="btn btn-primary">
                   </form>
 					</div>

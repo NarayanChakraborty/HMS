@@ -26,10 +26,11 @@ header('location: index.php');
 		
 			<div class="col-md-6 validation-grids widget-shadow" style="padding-top:20px;" data-example-id="basic-forms"> 
 							<div class="form-title">
-								<h4><u>Provide Information:</u></h4>
-							</div><br>
+								<h4 style="color:#337ab7;font-size:18px;padding:10px;"  class="btn active"><u>Provide Information</u></h4><br>
+								<span class="help-block" >First Be Confirm, Bill Has Been Created For this Patient</span>
+							</div>
 							<div class="form-body">
-								<form  method="get" action="report_generate.php">
+								<form  method="POST" action="report_generate.php">
 									<div class="form-group">
 									    </label>Enter Patient ID:</label>
 										<input type="number_format" class="form-control" id="inputName "name="id" placeholder="Enter Patient ID" required>

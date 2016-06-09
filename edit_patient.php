@@ -7,6 +7,17 @@ if($_SESSION['name']!='snchousebd')
 header('location: index.php');
 }
 ?>	
+
+<?php
+if(!isset($_REQUEST['id']))
+{
+	header('location:patient_details.php');
+}
+else
+{
+	$id1=$_REQUEST['id'];
+}
+?>
 	
 	<!--banner-->
 <?php include("header.php");?>
@@ -19,35 +30,12 @@ header('location: index.php');
 		 $p_doctor_id=0;
 if(isset($_POST['submit'])){
   try {
-    if(empty($_POST['p_name']))
-    {
-      throw new Exception("Patient Name Cannot be empty!");   
-    }
-    if(empty($_POST['p_contact_no']))
-    {
-      throw new Exception("Patient Contact No can't be empty!");   
-    }
-   /* if(empty($_POST['p_email']))
-    {
-      throw new Exception("Patient email Cannot be empty!");   
-    }*/
-    if(empty($_POST['p_nid']))
-    {
-      throw new Exception("Patient national ID  Cannot be empty!");   
-    }
-
+   
     if(empty($_POST['p_room_id']))
     {
      $p_room_id=0;   
     }    
-	if(empty($_POST['p_doctor_id']))
-    {
-      throw new Exception("Doctor ID Cannot be empty!!");   
-    }  
-	if(empty($_POST['p_sex']))
-    {
-      throw new Exception("Sex name Cannot be empty!!");   
-    }
+
 			
 			/*---------------------------------Image Upload------------------------------*/
 	
@@ -80,13 +68,29 @@ if(isset($_POST['submit'])){
 			throw new Exception("only jpg,jpeg,png and gif format are allowed");
 		}
 	     
+		 
+		 //To unlink previous image
+				
+				
+                        $statement2=$db->prepare("select * from patient_details where p_id=?");
+						$statement2->execute(array($id1));
+						$result2=$statement2->fetchAll(PDO::FETCH_ASSOC);
+						foreach($result2 as $row2)
+						{
+							$real_path= "images/patients_nid/".$row2['p_nid_image'];
+						    unlink($real_path);
+						}
+		 
+		 
+		 
+		 
         //upload image to a folder
         move_uploaded_file($_FILES['p_nid_image']['tmp_name'],"images/patients_nid/".$f1);		
 	
 	
 //=========================Image upload=============================//
 //==========================entry Date=============================//
-        $entry_date= date('Y-m-d');
+       
 		
 		$num=0;
 		$room_no=$_POST['p_room_id'];
@@ -124,10 +128,10 @@ if(isset($_POST['submit'])){
 		}
 		
 		
-		$statement1=$db->prepare("insert into patient_details(p_name,p_contact_no,p_email_id,p_nid,p_nid_image,p_room_id,p_doctor_id,p_sex,p_entry_date,p_release_date) values(?,?,?,?,?,?,?,?,?,?)");
-		   $statement1->execute(array($_POST['p_name'],$_POST['p_contact_no'],$_POST['p_email'],$_POST['p_nid'],$f1,$p_room_id,$p_doctor_id,$_POST['p_sex'],$entry_date,0));
+		$statement3=$db->prepare("update  patient_details set p_name=?,p_contact_no=?,p_email_id=?,p_nid=?,p_nid_image=?,p_room_id=?,p_doctor_id=?,p_sex=?,p_release_date=? where p_id=?");
+		   $statement3->execute(array($_POST['p_name'],$_POST['p_contact_no'],$_POST['p_email'],$_POST['p_nid'],$f1,$p_room_id,$p_doctor_id,$_POST['p_sex'],0,$id1));
 		   
-		   $success_message="Patient details is inserted succesfully";
+		   $success_message="Patient details is updated succesfully";
 		
   }catch (Exception $e) {
     $error_message = $e->getMessage();
@@ -151,6 +155,32 @@ if(isset($_POST['submit'])){
 			<div class="col-md-6 validation-grids widget-shadow" style="padding-top:20px;"data-example-id="basic-forms"> 
 							<div class="form-title">
 								<h4><u>Patient Information Edit Form :</u></h4>
+								
+								
+								
+								<!--------------------------Get exiting Data-------------->
+					<?php
+								 $statement=$db->prepare('Select * from patient_details where p_id=?');
+								  $statement->execute(array($id1));
+								  $result=$statement->fetchAll(PDO::FETCH_ASSOC);
+								  foreach( $result as $row)
+								  {
+									
+							$p_name=$row['p_name'];
+							$p_contact_no=$row['p_contact_no'];
+							$p_doctor_id=$row['p_doctor_id'];
+							$p_email_id=$row['p_email_id'];
+							$p_nid=$row['p_nid'];
+							$p_nid_image=$row['p_nid_image'];
+							$p_room_id=$row['p_room_id'];
+							$p_sex=$row['p_sex'];
+						 }
+					?>
+				<!--------------------------Get exiting Data-------------->
+				
+				
+								
+								
 								
 								<?php
                       if(isset($error_message)){
@@ -177,35 +207,42 @@ if(isset($_POST['submit'])){
 										
 							</div><br>
 							<div class="form-body"  >
-								<form action="entry_patient.php" method="post"  enctype="multipart/form-data">
+								<form action="" method="post" data-toggle="validator" enctype="multipart/form-data">
 									<div class="form-group">
 									    <label>Enter Patient Name:</label>
-										<input type="text" class="form-control" id="inputName" placeholder="Username" name="p_name" required>
+										<input type="text" class="form-control" value="<?php echo $p_name; ?>" id="inputName" placeholder="Username" name="p_name" required>
 									</div>
 									<div class="form-group">
 									<label>Contact No:</label>
-									  <input type="text" data-toggle="validator" data-length="12" class="form-control"  placeholder="Contact Number"
+									  <input type="text" data-toggle="validator" data-length="11" value="<?php echo $p_contact_no; ?>"   class="form-control"  placeholder="Contact Number"
                                      	name="p_contact_no" required>
+										<span class="help-block with-errors">Please Enter Your 11 Digit Mobile Number</span>
 									</div>
 								
 									<label>Enter Valid Email:</label>
-										<input type="email" class="form-control" id="inputEmail" placeholder="Email" 
+										<input type="email" class="form-control" value="<?php echo $p_email_id; ?>" id="inputEmail" placeholder="Email" 
 										name="p_email" data-error="Bruh, that email address is invalid">
+										
 										<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+										<span class="help-block with-errors">Please enter a valid email address</span>
 
 								   
 									<label>Enter National ID:</label>
-									  <input type="text" data-toggle="validator" data-length="17" class="form-control" 
+									  <input type="text" data-toggle="validator" data-length="17" value="<?php echo $p_nid;?>" class="form-control" 
 									  name="p_nid" id="inputPassword" placeholder="NID Number" required>
+									  <span class="help-block with-errors">Please Enter Your 17 Digit NID Number</span>
 
-								   <label>Attach NID Image</label>
+								  
+                                  <label>Previous NID Image</label>
+								  <img src="images/patients_nid/<?php echo $row['p_nid_image'];?>" width="450" height="400">	
+								  <label>Attach New NID Image</label>
 								   <input type="file" id="exampleInputFile" name="p_nid_image"> 
 								   <p class="help-block">Input National ID Image.</p>
 								   
 									<div class="form-group">
 									<label>Room ID:</label>
 
-									<input type="text" data-toggle="validator" data-minlength="3" class="form-control" name="p_room_id" placeholder="Room Number" >
+									<input type="text" data-toggle="validator" value="<?php echo $p_room_id; ?>" class="form-control" name="p_room_id" placeholder="Room Number" >
                                     </div>
 									
 									
@@ -229,12 +266,14 @@ if(isset($_POST['submit'])){
 										     $result2=$statement2->fetchAll(PDO::FETCH_ASSOC);
 						                    foreach( $result2 as $row2)
 						                   {
-										?>
-									
-									
-									  <option value="<?php echo $row1['doctor_id'];?>"><?php echo $row2['e_name'];?></option>
-									  
-									  <?php
+								  if($row1['p_doctor_id']==$p_doctor_id){
+						
+						?><option value="<?php echo $row1['p_doctor_id'];?>" selected><?php echo $row2['e_name'];?></option><?php
+                      }
+					 else
+					 {
+						 ?><option value="<?php echo $row1['p_doctor_id'];?>"><?php echo $row2['e_name'];?></option><?php	
+					 }
 										   }
 										   }
 										   ?>
@@ -256,9 +295,11 @@ if(isset($_POST['submit'])){
 											</label>
 										</div>
 									</div>
-									<div class="form-group">
-										<input type="submit"  name="submit" style="width:200px;margin-left:110px;margin-top:50px;" value="save">
-									</div>
+									<div class="bottom">
+											<div class="form-group">
+												<button type="submit" name="submit" style="width:200px;margin-left:110px;margin-top:50px;"class="btn btn-primary disabled">Save</button>
+											</div>
+										</div>
 								</form>
 							</div>
 						</div>

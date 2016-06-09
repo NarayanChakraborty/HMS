@@ -70,7 +70,7 @@
 											<td class="center"><?php echo $row['p_room_id']; ?></td>
 											<td class="center"><?php echo $row['p_entry_date'];?></td>
 											<td class="center"> <a class="btn btn-success" href="bill_entry.php?id=<?php echo $row['p_id']; ?>"title="create bill" style="width:40px;height:30px;">bill</a></td>
-											<td class="center"></td>
+											<td class="center"><?php echo $row['p_release_date'];?></td>
 											
 											<td>
 										      <div class="btn-group-sm">
@@ -94,7 +94,7 @@
 													  <!--Fancy box End-->
 											  
 
-											  <a class="btn btn-success" href="edit_patient.php"><i class="glyphicon glyphicon-pencil"></i></a>
+											  <a class="btn btn-success" href="edit_patient.php?id=<?php echo $row['p_id']; ?>"><i class="glyphicon glyphicon-pencil"></i></a>
 									
 											  
 											  

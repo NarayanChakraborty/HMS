@@ -13,6 +13,7 @@ if(!isset($_REQUEST['id']))
 }
 else
 {
+	
 		$id=$_REQUEST['id'];
 }
 
@@ -94,22 +95,24 @@ catch (Exception $e) {
 								<form data-toggle="validator" method="post">
 									<div class="form-group">
 									    </label>Treatment Charge:</label>
-										<input type="double" class="form-control" id="inputName" name="t_charge" placeholder="Treatment Charge" required>
+										<input type="double" class="form-control"  name="t_charge" placeholder="Treatment Charge" required>
 									</div>
 									<form data-toggle="validator">
 									<div class="form-group">
 									    </label>Medicine Charge:</label>
-										<input type="double" class="form-control" id="inputName" name="m_charge" placeholder="Medicine Charge" required>
+										<input type="double" class="form-control" name="m_charge" placeholder="Medicine Charge" required>
 									</div>
 									<div class="form-group has-feedback">
 									</label>Room Charge:</label>
-										<input type="double" class="form-control"  placeholder="Room Charge" name="r_charge" data-error="Bruh, that email address is invalid" required>
-										<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+										<input type="double" class="form-control"  placeholder="Room Charge" name="r_charge"  required>
+
 									</div>
 
-									<div class="form-group">
-										<input type="submit"  name="submit" style="width:200px;margin-left:110px;" value="save">
-									</div>
+									<div class="bottom">
+											<div class="form-group">
+												<button type="submit" name="submit" style="width:200px;margin-left:110px;margin-top:50px;"class="btn btn-primary disabled">Save</button>
+											</div>
+								</div>
 								</form>
 							</div>
 						</div>
